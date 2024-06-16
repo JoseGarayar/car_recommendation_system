@@ -36,4 +36,10 @@ def create_app():
     bcrypt.init_app(app)
     jwt.init_app(app)
 
+    with app.app_context():
+        from .models import User
+        db.create_all()
+
+    from . import routes
+
     return app

@@ -1,0 +1,7 @@
+# Base
+Flask==3.0.3
+psycopg2==2.9.9 --no-binary psycopg2
+sqlalchemy==2.0.29
+Flask-SQLAlchemy==3.1.1
+flask-bcrypt==1.0.1
+Flask-JWT-Extended==4.6.0

@@ -1,0 +1,17 @@
+volumes:
+  production_car_recommendation_postgres_data: {}
+  production_car_recommendation_postgres_data_backups: {}
+
+services:
+  flask:
+    build:
+      context: .
+      dockerfile: ./compose/production/flask/Dockerfile
+    image: car_recommendation_production
+    container_name: car_recommendation_production
+    env_file:
+      - ./.envs/.production/.flask.env
+      - ./.envs/.production/.postgres.env
+    ports:
+      - "80:5000"
+    command: /start

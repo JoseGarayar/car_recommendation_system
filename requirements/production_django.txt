@@ -1,0 +1,9 @@
+# PRECAUTION: avoid production dependencies that aren't in development
+
+-r ./base_django.txt
+
+# HTTP Server
+gunicorn==21.2.0
+
+# Static files
+whitenoise==6.6.0

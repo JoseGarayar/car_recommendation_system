@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+    <title>Old used cars | Store</title>
+{% endblock%}
+
+{% block container %}
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <img class="producto-img img-fluid" src="{{ car.urlpic }}" alt="Modelo {{ car.id }}">
+            </div>
+            <div class="col pt-4 pb-4">
+                <div class="producto-titulo pt-4">
+                    <h2>Model {{ producto.id }}</h2>
+                </div>
+                {% if car.model %}
+                    <div class="producto-descripcion pt-1 pb-4">
+                        <h5>{{ car.model | title }}</h5>
+                    </div>
+                {% endif %}
+                {% if not car.is_active %}
+                    <div class="producto-precio pt-4 pb-4">
+                        <h4>Agotado</h4>
+                    </div>
+                {% endif %}
+                <div class="d-flex align-items-center">
+                    <span class="badge bg-danger me-2">PRICE <br> OFFER</span></h1>
+                    <span class="card-subtitle text-danger font-weight-bold" style="font-size: 30px;">
+                        {{ car.price }}
+                    </span>
+                </div>
+                <small class="text-muted" style="font-size: 15px;">
+                    Normal: {{producto.price}}
+                </small>
+                <div class="producto-descripcion-xl pt-4">
+                    <h3>Descripción:</h3>
+                    <p>{{ producto.version | escape | linebreaks }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

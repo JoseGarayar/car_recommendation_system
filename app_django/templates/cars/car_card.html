@@ -1,0 +1,20 @@
+<a href="{% url "cars:detail" car.id %}" class="card-link text-decoration-none">
+    <div class="card h-100">
+        <img class="card-img-top img-fluid" src="{{ car.url }}" alt="Model {{ car.id }}">
+        <div class="card-body">
+            <p class="card-title">Modelo {{ car.id }}</p>
+            <p>{{ car.version }}</p>
+        </div>
+        <div class="card-footer">
+            {% if car.price %}
+                <div class="d-flex align-items-center">
+                    <span class="badge bg-danger me-2">PRICE <br> OFFER</span></h1>
+                    <span class="card-subtitle text-danger font-weight-bold">{{ car.price }}</span>
+                </div>
+                <small class="text-muted">
+                    Normal: {{car.price}}
+                </small>
+            {% endif %}
+        </div>
+    </div>
+</a>

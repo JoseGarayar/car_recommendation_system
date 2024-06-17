@@ -1,23 +1,41 @@
 volumes:
   local_car_recommendation_postgres_data: {}
   local_car_recommendation_postgres_data_backups: {}
+  local_car_recommendation_postgres_django_data: {}
+  local_car_recommendation_postgres_django_data_backups: {}
 
 services:
-  flask:
+  # flask:
+  #   build:
+  #     context: .
+  #     dockerfile: ./compose/local/flask/Dockerfile
+  #   image: car_recommendation_local
+  #   container_name: car_recommendation_local
+  #   depends_on:
+  #     - postgres
+  #   volumes:
+  #     - ./app:/app
+  #   env_file:
+  #     - ./.envs/.local/.flask.env
+  #     - ./.envs/.local/.postgres.env
+  #   ports:
+  #     - "5000:5000"
+  #   command: /start
+
+  django:
     build:
       context: .
-      dockerfile: ./compose/local/flask/Dockerfile
-    image: car_recommendation_local
-    container_name: car_recommendation_local
+      dockerfile: ./compose/local/django/Dockerfile
+    image: car_recommendation_local_django
+    container_name: car_recommendation_local_django
     depends_on:
       - postgres
     volumes:
-      - ./app:/app
+      - .:/app
     env_file:
-      - ./.envs/.local/.flask.env
       - ./.envs/.local/.postgres.env
     ports:
-      - "5000:5000"
+      - "8000:8000"
     command: /start
 
   postgres:
@@ -27,8 +45,10 @@ services:
     image: car_recommendation_postgres_local
     container_name: car_recommendation_postgres_local
     volumes:
-      - local_car_recommendation_postgres_data:/var/lib/postgresql/data
-      - local_car_recommendation_postgres_data_backups:/backups
+      # - local_car_recommendation_postgres_data:/var/lib/postgresql/data
+      # - local_car_recommendation_postgres_data_backups:/backups
+      - local_car_recommendation_postgres_django_data:/var/lib/postgresql/data
+      - local_car_recommendation_postgres_django_data_backups:/backups
     env_file:
       - ./.envs/.local/.postgres.env
     ports:

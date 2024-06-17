@@ -37,9 +37,15 @@ def create_app():
     jwt.init_app(app)
 
     with app.app_context():
-        from .models import User
+        from models import User
         db.create_all()
 
-    from . import routes
+    # Register routes
+    from routes import main as main_blueprint
+    app.register_blueprint(main_blueprint)
+
+    # Register CLI commands
+    from commands import register_commands
+    register_commands(app)
 
     return app

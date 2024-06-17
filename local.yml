@@ -8,11 +8,11 @@ services:
       context: .
       dockerfile: ./compose/local/flask/Dockerfile
     image: car_recommendation_local
-    container_name: car_recommendation_local_1
+    container_name: car_recommendation_local
     depends_on:
       - postgres
     volumes:
-      - ./app1:/app
+      - ./app:/app
     env_file:
       - ./.envs/.local/.flask.env
       - ./.envs/.local/.postgres.env
@@ -23,7 +23,7 @@ services:
   postgres:
     build:
       context: .
-      dockerfile: ./compose/local/postgres/Dockerfile
+      dockerfile: ./compose/production/postgres/Dockerfile
     image: car_recommendation_postgres_local
     container_name: car_recommendation_postgres_local
     volumes:

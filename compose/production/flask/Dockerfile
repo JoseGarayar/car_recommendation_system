@@ -17,7 +17,7 @@ COPY ./compose/production/flask/start /start
 RUN sed -i 's/\r//' /start
 RUN chmod +x /start
 
-COPY ./app1 /app
+COPY ./app /app
 
 RUN chown -R flask /app
 

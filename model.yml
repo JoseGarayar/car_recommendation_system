@@ -3,22 +3,21 @@ volumes:
   local_car_recommendation_postgres_data_backups: {}
 
 services:
-  flask:
+  estimator:
     build:
       context: .
-      dockerfile: ./compose/local/flask/Dockerfile
-    image: car_recommendation_local
-    container_name: car_recommendation_local
+      dockerfile: ./compose/local/estimator/Dockerfile
+    image: car_recommendation_model
+    container_name: car_recommendation_model
     depends_on:
       - postgres
     volumes:
-      - ./app:/app
+      - ./app_model:/app
     env_file:
-      - ./.envs/.local/.flask.env
-      - ./.envs/.local/.postgres.env
+      - ./.envs/.local/.estimator.env
     ports:
-      - "5000:5000"
-    command: /start
+      - "8888:8888"
+    command: ["/start"]
 
   postgres:
     build:

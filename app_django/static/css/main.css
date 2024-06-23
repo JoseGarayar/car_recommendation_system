@@ -4,7 +4,9 @@
     color: #1F4169;
 }
 #main-navbar img {
-    width: 200px;
+    width: 100%;
+    height: auto;
+    max-width: 80px;
 }
 /* Fin Header */
 

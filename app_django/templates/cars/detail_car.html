@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load currency_filters %}
+
 {% block head_content %}
     <title>Old used cars | Store</title>
 {% endblock%}
@@ -13,11 +15,11 @@
             </div>
             <div class="col pt-4 pb-4">
                 <div class="producto-titulo pt-4">
-                    <h2>Model {{ producto.id }}</h2>
+                    <h2>{{ car.brand }} {{ car.model }} {{ car.year }}</h2>
                 </div>
                 {% if car.model %}
                     <div class="producto-descripcion pt-1 pb-4">
-                        <h5>{{ car.model | title }}</h5>
+                        <h5>{{ car.location | title }}</h5>
                     </div>
                 {% endif %}
                 {% if not car.is_active %}
@@ -28,15 +30,56 @@
                 <div class="d-flex align-items-center">
                     <span class="badge bg-danger me-2">PRICE <br> OFFER</span></h1>
                     <span class="card-subtitle text-danger font-weight-bold" style="font-size: 30px;">
-                        {{ car.price }}
+                        {{ car.price|format_currency:car.currency }}
                     </span>
                 </div>
                 <small class="text-muted" style="font-size: 15px;">
-                    Normal: {{producto.price}}
+                    Normal: {{ car.price|format_currency:car.currency }}
                 </small>
-                <div class="producto-descripcion-xl pt-4">
-                    <h3>Descripción:</h3>
-                    <p>{{ producto.version | escape | linebreaks }}</p>
+                <div class="producto-descripcion pt-4 pb-1">
+                    <div class="category-icon">
+                        <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.46 10a1 1 0 0 0-.07 1c.248.579.423 1.187.52 1.81a8 8 0 0 1-.69 4.73 1 1 0 0 1-.89.53H5.68a1 1 0 0 1-.89-.54A8 8 0 0 1 13 6.06a7.69 7.69 0 0 1 2.11.56 1 1 0 0 0 1-.07 1 1 0 0 0-.17-1.76A10 10 0 0 0 3.35 19a2 2 0 0 0 1.72 1h13.85a2 2 0 0 0 1.74-1 10 10 0 0 0 .55-8.89 1 1 0 0 0-1.75-.11Z" fill="currentColor"></path><path d="M10.59 12.59a2.001 2.001 0 0 0 2.83 2.83l5.66-8.49-8.49 5.66Z" fill="currentColor"></path></svg>
+                    </div>
+                    <div class="category-text">
+                        <div>Kilometraje</div>
+                        <div class="category-value">{{ car.km }} km</div>
+                    </div>
+                </div>
+                <div class="producto-descripcion pt-1 pb-1">
+                    <div class="category-icon">
+                        <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.577 4H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3h-1.577l-.609 1.947a1.338 1.338 0 0 1-.017.053H18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5.204a1.338 1.338 0 0 1-.018-.053L10.577 4Z" fill="currentColor"></path><path d="M11.406 3.298A1 1 0 0 1 12.36 2h2.28a1 1 0 0 1 .954 1.298L14.86 5.65a.5.5 0 0 1-.478.351H14v1.5a.5.5 0 0 1-1 0V6h-.382a.5.5 0 0 1-.478-.35l-.734-2.352ZM8.5 15h-1c-.275 0-.5.225-.5.5s.225.5.5.5h1c.275 0 .5-.225.5-.5s-.225-.5-.5-.5ZM8.5 13h-1c-.275 0-.5.225-.5.5s.225.5.5.5h1c.275 0 .5-.225.5-.5s-.225-.5-.5-.5ZM8.5 11h-1c-.275 0-.5.225-.5.5s.225.5.5.5h1c.275 0 .5-.225.5-.5s-.225-.5-.5-.5ZM8.5 9h-1c-.275 0-.5.225-.5.5s.225.5.5.5h1c.275 0 .5-.225.5-.5S8.775 9 8.5 9Z" fill="currentColor"></path><path d="M15 8h1.5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 1 .5-.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h.5c0 .5.672 1 1.5 1S15 8.5 15 8Z" fill="currentColor"></path></svg>
+                    </div>
+                    <div class="category-text">
+                        <div>Transmisión</div>
+                        <div class="category-value">{{ car.transmission }}</div>
+                    </div>
+                </div>
+                <div class="producto-descripcion pt-1 pb-1">
+                    <div class="category-icon">
+                        <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.54 6.29 19 4.75l-1.41-1.41a1.003 1.003 0 1 0-1.42 1.42l1 1-.83 2.49a3 3 0 0 0 .73 3.07l2.95 3V19a1 1 0 0 1-2 0v-2a3 3 0 0 0-3-3H14V5a3 3 0 0 0-3-3H5a3 3 0 0 0-3 3v14a3 3 0 0 0 3 3h6a3 3 0 0 0 3-3v-3h1a1 1 0 0 1 1 1v2a3 3 0 0 0 6 0V9.83a5 5 0 0 0-1.46-3.54ZM12 19a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-7h8v7Zm0-9H4V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v5Zm8 1.42-1.54-1.54a1 1 0 0 1-.24-1l.51-1.54.39.4A3 3 0 0 1 20 9.83v1.59Z" fill="currentColor"></path></svg>
+                    </div>
+                    <div class="category-text">
+                        <div>Combustible</div>
+                        <div class="category-value">{{ car.fuel_type }}</div>
+                    </div>
+                </div>
+                <div class="producto-descripcion pt-1 pb-1">
+                    <div class="category-icon">
+                        <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 5a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2h-1v1h1.793a1.5 1.5 0 0 1 1.06.44L18.415 9H20.5a1.5 1.5 0 0 1 1.5 1.5v6a1.5 1.5 0 0 1-1.5 1.5h-2.086l-1.56 1.56a1.5 1.5 0 0 1-1.061.44H9.167a1.5 1.5 0 0 1-.9-.3L4.6 16.95a1.5 1.5 0 0 1-.6-1.2V14H3v1.5a.5.5 0 0 1-1 0v-4a.5.5 0 0 1 1 0V13h1v-1.5A1.5 1.5 0 0 1 5.5 10h.965L8.02 7.668A1.5 1.5 0 0 1 9.268 7H10V6H9a1 1 0 0 1-1-1Zm5 1v1h-2V6h2ZM9.535 9 7.98 11.332A1.5 1.5 0 0 1 6.732 12H6v3.5L9.333 18h6.253l1.56-1.56a1.5 1.5 0 0 1 .854-.426v-5.028a1.5 1.5 0 0 1-.854-.425L15.586 9h-6.05ZM19 11v5h1v-5h-1Z" fill="currentColor"></path></svg>
+                    </div>
+                    <div class="category-text">
+                        <div>Cilindrada</div>
+                        <div class="category-value">{{ car.engine }} cc</div>
+                    </div>
+                </div>
+                <div class="producto-descripcion pt-1 pb-1">
+                    <div class="category-icon">
+                        <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 14a1 1 0 1 1 2 0 1 1 0 0 1-2 0ZM11 13a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2h-2ZM17 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z" fill="currentColor"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M2.345 10.224A4 4 0 0 0 2 11.85V17a2 2 0 0 0 2 2v1.5A1.5 1.5 0 0 0 5.5 22h1A1.5 1.5 0 0 0 8 20.5V19h8v1.5a1.5 1.5 0 0 0 1.5 1.5h1a1.5 1.5 0 0 0 1.5-1.5V19a2 2 0 0 0 2-2v-5.151a4 4 0 0 0-.345-1.625l-.546-1.23A1 1 0 0 0 22 8V7a1 1 0 0 0-1-1h-1c-.073 0-.144.008-.212.023l-1.26-2.835A2 2 0 0 0 16.7 2H7.3a2 2 0 0 0-1.828 1.188l-1.26 2.835A1.003 1.003 0 0 0 4 6H3a1 1 0 0 0-1 1v1a1 1 0 0 0 .892.994l-.547 1.23ZM19 17a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h14ZM16.964 4.594A1 1 0 0 0 16.05 4h-8.1a1 1 0 0 0-.914.594L5.078 9h13.845l-1.959-4.406Z" fill="currentColor"></path></svg>
+                    </div>
+                    <div class="category-text">
+                        <div>Tapicería</div>
+                        <div class="category-value">{{ car.upholstery }}</div>
+                    </div>
                 </div>
             </div>
         </div>

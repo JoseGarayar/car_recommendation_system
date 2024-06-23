@@ -72,10 +72,10 @@ body {
 /* Fin Detalle Producto */
 
 .card-link {
-    color: #03989E;
+    color: #3366cc;
 }
 .card-link:hover {
-    color: #156A6D;
+    color: #003366;
 }
 
 .text-color-neutral {
@@ -83,17 +83,33 @@ body {
 }
 
 .btn-primary, .btn-primary:active, .btn-primary:visited {
-    background-color: #03989E !important;
+    background-color: #3366cc !important;
 }
 
 .btn-primary:hover {
-    background-color: #156A6D !important;
+    background-color: #003366 !important;
 }
 
 .page-link {
-    color: #156A6D !important;
+    color: #003366 !important;
 }
 
 .form-check .form-check-input:checked {
-    background-color: #03989E !important;
+    background-color: #3366cc !important;
+}
+
+/* Category */
+.category-icon {
+    font-size: 2rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+.category-text {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+.category-value {
+    font-size: 1.5rem;
+    font-weight: bold;
 }

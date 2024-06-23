@@ -1,0 +1,81 @@
+Brands,Models,Version,Currency,Price,Urlpic,Year,KM,Fuel_type,Transmission,Location,Color,Cilinder,Upholstery,Engine,Age
+SUZUKI,S-PRESSO,4x2,USD,9800.0,https://cde.neoauto.pe/autos_usados/360x240/663165/663165_5117209.webp,2023,16684,Gasolina,mecanica,Lima,Rojo,3.0,tela,1000.0,1
+DFSK,GLORY 500,delantera,USD,12000.0,https://cde.neoauto.pe/autos_usados/360x240/701904/701904_1941182.webp,2023,11054,Gas GLP,mecanica,Lima,Blanco,4.0,tela,1500.0,1
+TOYOTA,YARIS,delantera,USD,15500.0,https://cde.neoauto.pe/autos_usados/360x240/701904/701904_7103350.webp,2023,15500,Gas GNV,mecanica,Lima,Rojo,4.0,tela,1300.0,1
+FORD,RAPTOR,4x4,USD,75900.0,https://cde.neoauto.pe/autos_usados/360x240/303494/303494_5417536.webp,2020,12500,Gasolina,automatica_secuencial,Lima,Blanco,6.0,tela,3500.0,4
+KIA,SPORTAGE,4x2,USD,27900.0,https://cde.neoauto.pe/autos_usados/360x240/701904/701904_4632773.webp,2023,52130,Gasolina,mecanica,Lima,Gris,4.0,cuero,1999.0,1
+DFSK,GLORY 500,4x2,USD,12000.0,https://cde.neoauto.pe/autos_usados/360x240/701904/701904_4231845.webp,2023,11050,Dual,mecanica,Lima,Otro,,tela,1500.0,1
+AUDI,Q5,otros,USD,44900.0,https://cde.neoauto.pe/autos_usados/360x240/671842/671842_3471745.webp,2021,35000,Gasolina,automatica_secuencial,Lima,Rojo,4.0,tela,2000.0,3
+HYUNDAI,ELANTRA,otros,USD,18995.0,https://cde.neoauto.pe/autos_usados/360x240/708742/708742_6736470.webp,2023,14268,Dual,mecanica,Lima,Negro,,cuero,,1
+NISSAN,KICKS,4x2,USD,20990.0,https://cde.neoauto.pe/autos_usados/360x240/708742/708742_4224964.webp,2023,890,Gasolina,automatica,Lima,Negro,4.0,tela,1600.0,1
+RENAULT,KOLEOS,4x2,USD,10985.0,https://cde.neoauto.pe/autos_usados/360x240/708742/708742_2357295.webp,2014,45565,Gasolina,mecanica,Lima,Blanco,,cuero,,10
+NISSAN,X-TRAIL,4x2,USD,17990.0,https://cde.neoauto.pe/autos_usados/360x240/708742/708742_8106697.webp,2019,74000,Gasolina,automatica,Lima,Azul,,tela,,5
+MAZDA,CX-5,otros,USD,20500.0,https://cde.neoauto.pe/autos_usados/360x240/358152/358152_6998749.webp,2018,66177,Gasolina,automatica,Lima,Azul,,cuero,2000.0,6
+HYUNDAI,ELANTRA,otros,USD,13985.0,https://cde.neoauto.pe/autos_usados/360x240/708742/708742_8842641.webp,2019,42599,Gasolina,mecanica,Lima,Plata,,tela,,5
+MAZDA,3,4x2,USD,7999.0,https://cde.neoauto.pe/autos_usados/360x240/741059/741059_3141868.webp,2012,57000,Gasolina,automatica_secuencial,Lima,Blanco,,tela,1600.0,12
+KIA,SORENTO,4x4,USD,13200.0,https://cde.neoauto.pe/autos_usados/360x240/694113/694113_2869542.webp,2012,56000,Gasolina,automatica,Lima,Plata,4.0,tela,2400.0,12
+AUDI,Q5,otros,USD,12500.0,https://cde.neoauto.pe/autos_usados/360x240/464559/464559_1317775.webp,2012,187800,Gasolina,automatica_secuencial,Lima,Otro,4.0,cuero,2000.0,12
+JEEP,GRAND CHEROKEE LAREDO,otros,USD,19500.0,https://cde.neoauto.pe/autos_usados/360x240/358152/358152_5540032.webp,2015,63666,Gasolina,automatica,Lima,Gris,,cuero,3600.0,9
+MAZDA,3 SPORT,otros,USD,21000.0,https://cde.neoauto.pe/autos_usados/360x240/358152/358152_8413588.webp,2023,16187,Gasolina,automatica,Lima,Azul,,tela,2000.0,1
+HYUNDAI,I20,otros,USD,12500.0,https://cde.neoauto.pe/autos_usados/360x240/358152/358152_5670244.webp,2019,66627,Gasolina,automatica,Lima,Plata,5.0,tela,1400.0,5
+MERCEDES BENZ,C-180,otros,USD,17500.0,https://cde.neoauto.pe/autos_usados/360x240/358152/358152_3597796.webp,2016,72072,Gasolina,automatica,Lima,Plata,,cuero,1600.0,8
+RENAULT,DUSTER,4x2,USD,8500.0,https://cde.neoauto.pe/autos_usados/360x240/358152/358152_7158171.webp,2014,72396,Gasolina,mecanica,Lima,Otro,,tela,1600.0,10
+VOLKSWAGEN,TIGUAN ALLSPACE,delantera,USD,23500.0,https://cde.neoauto.pe/autos_usados/360x240/647708/647708_7319728.webp,2021,25000,Gasolina,automatica_secuencial,Lima,Blanco,4.0,cuero,1400.0,3
+NISSAN,KICKS,otros,USD,16000.0,https://cde.neoauto.pe/autos_usados/360x240/358152/358152_6965696.webp,2018,61733,Gasolina,automatica,Lima,Rojo,,tela,1600.0,6
+NISSAN,QASHQAI,4x4,USD,21000.0,https://cde.neoauto.pe/autos_usados/360x240/358152/358152_6810619.webp,2019,55656,Gasolina,automatica,Lima,Gris,,tela,2000.0,5
+CHEVROLET,TRACKER,4x2,USD,15500.0,https://cde.neoauto.pe/autos_usados/360x240/358152/358152_2240449.webp,2021,38265,Gasolina,mecanica,Lima,Gris,,tela,1200.0,3
+NISSAN,FRONTIER,4x2,USD,20500.0,https://cde.neoauto.pe/autos_usados/360x240/358152/358152_2748497.webp,2020,70331,Diesel,mecanica,Lima,Gris,,tela,2500.0,4
+MAZDA,CX-5,4x2,USD,22990.0,https://cde.neoauto.pe/autos_usados/360x240/465566/465566_4543233.webp,2023,29000,Gasolina,automatica_secuencial,Lima,Otro,4.0,tela,2000.0,1
+MITSUBISHI,OUTLANDER,4x2,USD,17500.0,https://cde.neoauto.pe/autos_usados/360x240/358152/358152_4129781.webp,2017,77823,Gasolina,automatica,Lima,Blanco,,tela,2000.0,7
+AUDI,Q5,otros,USD,15900.0,https://cde.neoauto.pe/autos_usados/360x240/565310/565310_7179172.webp,2012,83000,Gasolina,automatica_secuencial,Lima,Gris,4.0,tela,2000.0,12
+PORSCHE,MACAN S,otros,USD,35000.0,https://cde.neoauto.pe/autos_usados/360x240/394772/394772_5382594.webp,2016,46000,Gasolina,automatica_secuencial,Lima,Otro,6.0,cuero,3000.0,8
+CHEVROLET,TRACKER,otros,USD,13500.0,https://cde.neoauto.pe/autos_usados/360x240/72317/72317_1206853.webp,2019,60200,Dual,mecanica,Lima,Plata,4.0,tela,1800.0,5
+VOLKSWAGEN,TIGUAN,4x4,USD,12500.0,https://cde.neoauto.pe/autos_usados/360x240/685669/685669_3575411.webp,2013,78414,Gasolina,automatica,Lima,Gris,4.0,cuero,2000.0,11
+MITSUBISHI,ASX,4x2,USD,9700.0,https://cde.neoauto.pe/autos_usados/360x240/732244/732244_2589719.webp,2012,68000,Gasolina,mecanica,Callao,Blanco,4.0,tela,1998.0,12
+HONDA,PILOT,otros,USD,13800.0,https://cde.neoauto.pe/autos_usados/360x240/523774/523774_1601060.webp,2012,142000,Gasolina,automatica,Lima,Marrón,6.0,cuero,3400.0,12
+PEUGEOT,3008,4x2,USD,26500.0,https://cde.neoauto.pe/autos_usados/360x240/742121/742121_3172160.webp,2020,32000,Gasolina,automatica_secuencial,Lima,Blanco,4.0,tela,1600.0,4
+SUBARU,IMPREZA,otros,USD,17500.0,https://cde.neoauto.pe/autos_usados/360x240/261607/261607_4968049.webp,2017,36000,Gasolina,automatica,Lima,Azul,4.0,tela,2000.0,7
+CHEVROLET,SPIN,otros,USD,11900.0,https://cde.neoauto.pe/autos_usados/360x240/701904/701904_4846142.webp,2017,53876,Gasolina,automatica,Lima,Blanco,4.0,tela,1796.0,7
+HYUNDAI,TUCSON,4x2,USD,29500.0,https://cde.neoauto.pe/autos_usados/360x240/663165/663165_9942259.webp,2023,17199,Gas GLP,automatica_secuencial,Lima,Plata,4.0,tela,2000.0,1
+PEUGEOT,208,4x2,USD,11700.0,https://cde.neoauto.pe/autos_usados/360x240/701904/701904_9734663.webp,2018,61243,Gasolina,mecanica,Lima,Blanco,4.0,tela,1199.0,6
+KIA,SONET,4x2,USD,16900.0,https://cde.neoauto.pe/autos_usados/360x240/701904/701904_8749903.webp,2024,2000,Gasolina,mecanica,Lima,Rojo,,cuero,1500.0,0
+HYUNDAI,TUCSON,4x2,USD,24000.0,https://cde.neoauto.pe/autos_usados/360x240/179908/179908_7093802.webp,2023,9400,Gas GLP,automatica_secuencial,Lima,Plata,4.0,tela,2000.0,1
+MAZDA,CX-5,4x4,USD,34900.0,https://cde.neoauto.pe/autos_usados/360x240/663165/663165_5520031.webp,2023,15570,Gasolina,automatica_secuencial,Lima,Rojo,4.0,tela,2000.0,1
+HYUNDAI,I20 HB,otros,USD,18000.0,https://cde.neoauto.pe/autos_usados/360x240/337014/337014_6462729.webp,2022,25800,Gasolina,automatica,Lima,Blanco,,tela,,2
+GEELY,GX3,otros,USD,9900.0,https://cde.neoauto.pe/autos_usados/360x240/337014/337014_7850841.webp,2020,44500,Gas GLP,mecanica,Lima,Gris,,tela,,4
+CITROEN,C5 AIRCROSS,4x2,USD,19000.0,https://cde.neoauto.pe/autos_usados/360x240/155466/155466_3459791.webp,2020,25257,Gasolina,automatica,Lima,Otro,,tela,1600.0,4
+SUZUKI,BALENO,4x2,USD,13500.0,https://cde.neoauto.pe/autos_usados/360x240/155466/155466_1220476.webp,2022,21598,Gasolina,automatica,Lima,Azul,,cuero,1400.0,2
+TOYOTA,COROLLA,4x2,USD,16000.0,https://cde.neoauto.pe/autos_usados/360x240/650434/650434_5772964.webp,2018,43029,Gasolina,automatica_secuencial,Lima,Plata,4.0,tela,1800.0,6
+TOYOTA,COROLLA CROSS,4x2,USD,23000.0,https://cde.neoauto.pe/autos_usados/360x240/650434/650434_2770961.webp,2023,15063,Gasolina,automatica_secuencial,Lima,Plata,4.0,tela,2000.0,1
+TOYOTA,RAIZE,4x2,USD,16400.0,https://cde.neoauto.pe/autos_usados/360x240/650434/650434_3510542.webp,2023,10780,Gasolina,automatica_secuencial,Lima,Plata,3.0,tela,1200.0,1
+TOYOTA,RUSH,4x2,USD,20500.0,https://cde.neoauto.pe/autos_usados/360x240/650434/650434_8178531.webp,2022,40437,Gasolina,mecanica,Lima,Blanco,4.0,tela,1500.0,2
+TOYOTA,RUSH,4x2,USD,17500.0,https://cde.neoauto.pe/autos_usados/360x240/650434/650434_5576929.webp,2021,51000,Gasolina,automatica,Lima,Otro,,tela,1500.0,3
+TOYOTA,RUSH,4x2,USD,17800.0,https://cde.neoauto.pe/autos_usados/360x240/650434/650434_6421880.webp,2022,62440,Gasolina,automatica,Lima,Plata,4.0,tela,1500.0,2
+HYUNDAI,CRETA,otros,USD,18100.0,https://cde.neoauto.pe/autos_usados/360x240/337014/337014_7883548.webp,2023,38383,Gas GLP,mecanica,Lima,Blanco,,tela,,1
+KIA,SELTOS,otros,USD,19500.0,https://cde.neoauto.pe/autos_usados/360x240/337014/337014_7548817.webp,2023,7720,Gasolina,automatica,Lima,Otro,,tela,,1
+GEELY,GX3,otros,USD,11800.0,https://cde.neoauto.pe/autos_usados/360x240/337014/337014_4061765.webp,2023,18000,Gas GLP,automatica,Lima,Rojo,,tela,,1
+AUDI,A3 SPORTBACK,delantera,USD,28900.0,https://cde.neoauto.pe/autos_usados/360x240/742951/742951_7885414.webp,2022,13700,Gasolina,automatica,Lima,Rojo,4.0,tela,1400.0,2
+TOYOTA,PRIUS,4x2,USD,15800.0,https://cde.neoauto.pe/autos_usados/360x240/650434/650434_3565959.webp,2018,86649,Gasolina-HÃ­brido,automatica_secuencial,Lima,Gris,4.0,tela,1800.0,6
+NISSAN,SENTRA,4x2,USD,17000.0,https://cde.neoauto.pe/autos_usados/360x240/650434/650434_5738600.webp,2023,25607,Gasolina,mecanica,Lima,Gris,4.0,tela,2000.0,1
+TOYOTA,FORTUNER,4x4,USD,42000.0,https://cde.neoauto.pe/autos_usados/360x240/742917/742917_2751331.webp,2019,62000,Diesel,mecanica,La Libertad,Blanco,4.0,cuero,2755.0,5
+MAZDA,2,4x2,USD,18200.0,https://cde.neoauto.pe/autos_usados/360x240/650434/650434_1887505.webp,2024,633,Gasolina,mecanica,Lima,Marrón,4.0,tela,1500.0,0
+FORD,RANGER,4x4,USD,21300.0,https://cde.neoauto.pe/autos_usados/360x240/242077/242077_3158638.webp,2021,131791,Diesel,mecanica,Lima,Otro,,tela,2200.0,3
+MINI,HATCH 3DR,otros,USD,33991.0,https://cde.neoauto.pe/autos_usados/360x240/208604/208604_4087470.webp,2024,1786,ElÃ©ctrico,automatica,Lima,Negro,,tela,,0
+JEEP,GRAND CHEROKEE LIMITED,4x4,USD,13000.0,https://cde.neoauto.pe/autos_usados/360x240/715295/715295_1114951.webp,2006,140000,Gasolina,automatica_secuencial,Lima,Azul,8.0,tela,5700.0,18
+LEXUS,IS 300,posterior,USD,22700.0,https://cde.neoauto.pe/autos_usados/360x240/648078/648078_5953511.webp,2018,31000,Gasolina,automatica_secuencial,Lima,Plata,4.0,cuero,2000.0,6
+FORD,MUSTANG,posterior,USD,19500.0,https://cde.neoauto.pe/autos_usados/360x240/742866/742866_3439844.webp,1965,54000,Gasolina,automatica,Lima,Otro,8.0,tela,4700.0,59
+HYUNDAI,SANTA FE,4x2,USD,17500.0,https://cde.neoauto.pe/autos_usados/360x240/742915/742915_7655377.webp,2014,97000,Gasolina,automatica_secuencial,Lima,Blanco,,tela,2400.0,10
+VOLKSWAGEN,NIVUS,4x2,USD,17200.0,https://cde.neoauto.pe/autos_usados/360x240/662916/662916_5594562.webp,2021,53000,Gasolina,automatica_secuencial,Lima,Gris,3.0,tela,1000.0,3
+MERCEDES BENZ,GLE 400 4MATIC,otros,USD,38000.0,https://cde.neoauto.pe/autos_usados/360x240/332517/332517_6487100.webp,2018,49000,Gasolina,automatica_secuencial,Lima,Plata,6.0,cuero,3000.0,6
+MERCEDES BENZ,C-350,posterior,USD,13800.0,https://cde.neoauto.pe/autos_usados/360x240/723718/723718_1499902.webp,2012,119100,Gasolina,automatica_secuencial,Lima,Plata,6.0,tela,3500.0,12
+SUBARU,FORESTER,otros,USD,12500.0,https://cde.neoauto.pe/autos_usados/360x240/191263/191263_5010088.webp,2011,86500,Gasolina,mecanica,Lima,Blanco,,tela,2000.0,13
+TOYOTA,HILUX,4x4,USD,33000.0,https://cde.neoauto.pe/autos_usados/360x240/406692/406692_9432200.webp,2017,90000,Diesel,mecanica,Lima,Rojo,4.0,tela,2800.0,7
+KIA,RIO,otros,USD,10200.0,https://cde.neoauto.pe/autos_usados/360x240/706675/706675_2490868.webp,2017,96000,Gas GLP,mecanica,La Libertad,Gris,4.0,tela,1400.0,7
+TOYOTA,4RUNNER,4x4,USD,51000.0,https://cde.neoauto.pe/autos_usados/360x240/742886/742886_4092682.webp,2021,45000,Gasolina,automatica_secuencial,Lima,Gris,3.0,tela,4000.0,3
+DODGE,JOURNEY,delantera,USD,12900.0,https://cde.neoauto.pe/autos_usados/360x240/187065/187065_9178621.webp,2014,105000,Gas GLP,automatica,Lima,Azul,4.0,tela,2400.0,10
+AUDI,A4,delantera,USD,12900.0,https://cde.neoauto.pe/autos_usados/360x240/187065/187065_5404632.webp,2013,112000,Gasolina,automatica,Lima,Gris,4.0,tela,1800.0,11
+KIA,SORENTO,4x2,USD,16000.0,https://cde.neoauto.pe/autos_usados/360x240/676108/676108_6870302.webp,2016,68000,Gasolina,automatica,Lima,Otro,4.0,tela,,8
+VOLKSWAGEN,SAVEIRO,delantera,USD,11900.0,https://cde.neoauto.pe/autos_usados/360x240/232493/232493_6767577.webp,2022,26000,Gasolina,mecanica,Lima,Plata,4.0,tela,1598.0,2
+KIA,SPORTAGE,4x2,USD,17900.0,https://cde.neoauto.pe/autos_usados/360x240/663165/663165_7677544.webp,2017,85584,Gasolina,automatica_secuencial,Lima,Gris,4.0,tela,2000.0,7
+KIA,SONET,4x2,USD,15990.0,https://cde.neoauto.pe/autos_usados/360x240/741676/741676_1698621.webp,2021,20000,Gasolina,mecanica,Lima,Blanco,4.0,tela,1497.0,3
+JETOUR,X70 PLUS,4x2,USD,19900.0,https://cde.neoauto.pe/autos_usados/360x240/663165/663165_7729361.webp,2023,9017,Gasolina,mecanica,Lima,Negro,4.0,tela,1500.0,1

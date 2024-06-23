@@ -1,18 +1,26 @@
+{% load currency_filters %}
+
 <a href="{% url "cars:detail" car.id %}" class="card-link text-decoration-none">
     <div class="card h-100">
-        <img class="card-img-top img-fluid" src="{{ car.url }}" alt="Model {{ car.id }}">
+        <img class="card-img-top img-fluid" src="{{ car.urlpic }}" alt="Model {{ car.id }}">
         <div class="card-body">
-            <p class="card-title">Modelo {{ car.id }}</p>
-            <p>{{ car.version }}</p>
+            <p class="card-title">{{ car.brand }} {{ car.model }} {{ car.year }}</p>
+            <p>
+                {{ car.fuel_type }} | {{ car.transmission }}
+                <br>
+                {{ car.km }} KM
+                <br>
+                {{ car.location }}
+            </p>
         </div>
         <div class="card-footer">
             {% if car.price %}
                 <div class="d-flex align-items-center">
                     <span class="badge bg-danger me-2">PRICE <br> OFFER</span></h1>
-                    <span class="card-subtitle text-danger font-weight-bold">{{ car.price }}</span>
+                    <span class="card-subtitle text-danger font-weight-bold">{{ car.price|format_currency:car.currency }}</span>
                 </div>
                 <small class="text-muted">
-                    Normal: {{car.price}}
+                    Normal: {{ car.price|format_currency:car.currency }}
                 </small>
             {% endif %}
         </div>

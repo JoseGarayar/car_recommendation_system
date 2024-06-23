@@ -21,3 +21,8 @@ docker-compose -f local.yml run --rm django python manage.py createsuperuser
 docker-compose -f local.yml run --rm django python manage.py makemigrations
 ```
 
+4. How to add cars to the DB using a command
+
+```bash
+docker-compose -f local.yml run --rm django python manage.py load_cars_from_csv app_django/media/neoauto_clean.csv
+```

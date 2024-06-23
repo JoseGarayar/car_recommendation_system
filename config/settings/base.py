@@ -38,8 +38,8 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY_APPS = []
 LOCAL_APPS = [
-    'app_django.users',
-    'app_django.cars'
+    'users',
+    'cars'
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 

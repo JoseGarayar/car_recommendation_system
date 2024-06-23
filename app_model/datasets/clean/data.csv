@@ -1209,7 +1209,7 @@ Age,Brands,Cilinder,Color,Currency,Engine,Fuel_type,KM,Location,Models,Price,Tra
 1.0,JAC,,rojo,USD,1500.0,gasolina,5056.0,Lima,JS8,20000.0,automatica,tela,https://cde.neoauto.pe/autos_usados/360x240/155466/155466_3000315.webp,4x2,2023.0
 6.0,BMW,4.0,blanco,USD,2000.0,gasolina,53000.0,Lima,X2 20i,25500.0,automatica,tela,https://cde.neoauto.pe/autos_usados/360x240/317829/317829_6278384.webp,4x2,2018.0
 4.0,CHEVROLET,4.0,negro,USD,1389.0,dual,45550.0,Lima,PRISMA,8500.0,mecanica,tela,https://cde.neoauto.pe/autos_usados/360x240/629098/629098_3077632.webp,delantera,2020.0
--1.0,TOYOTA,3.0,gris,USD,1200.0,gasolina,1864.0,Provincias,RAIZE,17000.0,mecanica,tela,https://cde.neoauto.pe/autos_usados/360x240/692838/692838_8668900.webp,delantera,2025.0
+0.0,TOYOTA,3.0,gris,USD,1200.0,gasolina,1864.0,Provincias,RAIZE,17000.0,mecanica,tela,https://cde.neoauto.pe/autos_usados/360x240/692838/692838_8668900.webp,delantera,2024.0
 9.0,MERCEDES BENZ,6.0,plata,USD,3498.0,gasolina,71000.0,Lima,ML 300 4MATIC,21500.0,automatica,cuero,https://cde.neoauto.pe/autos_usados/360x240/708953/708953_4883018.webp,otros,2015.0
 4.0,SUZUKI,4.0,blanco,USD,2400.0,gasolina,55000.0,Lima,GRAND NOMADE,15900.0,automatica,tela,https://cde.neoauto.pe/autos_usados/360x240/582116/582116_7299508.webp,4x2,2020.0
 0.0,TOYOTA,4.0,gris,USD,2800.0,diesel,36660.0,Provincias,HILUX,47500.0,automatica,tela,https://cde.neoauto.pe/autos_usados/360x240/692838/692838_8758005.webp,4x4,2024.0
@@ -3823,7 +3823,7 @@ Age,Brands,Cilinder,Color,Currency,Engine,Fuel_type,KM,Location,Models,Price,Tra
 5.0,VOLVO,,negro,USD,,gasolina,26000.0,Lima,XC-60,40999.0,automatica_secuencial,cuero,https://cde.neoauto.pe/autos_usados/360x240/437364/437364_2999934.webp,otros,2019.0
 5.0,VOLKSWAGEN,4.0,plata,USD,1598.0,dual,34000.0,Lima,GOL POWER,10000.0,mecanica,tela,https://cde.neoauto.pe/autos_usados/360x240/742696/742696_9452984.webp,delantera,2019.0
 3.0,CHANGAN,4.0,blanco,USD,1600.0,dual,21000.0,Lima,CX70,13000.0,mecanica,tela,https://cde.neoauto.pe/autos_usados/360x240/742640/742640_5586518.webp,4x2,2021.0
--1.0,VOLVO,14.0,negro,USD,2500.0,diesel,,Lima,XC-70,40000.0,automatica_secuencial,tela,https://cde.neoauto.pe/autos_usados/360x240/701770/701770_3562994.webp,otros,2025.0
+0.0,VOLVO,14.0,negro,USD,2500.0,diesel,,Lima,XC-70,40000.0,automatica_secuencial,tela,https://cde.neoauto.pe/autos_usados/360x240/701770/701770_3562994.webp,otros,2024.0
 7.0,KIA,4.0,otros,USD,2000.0,gasolina,85000.0,Lima,SPORTAGE,18500.0,automatica_secuencial,tela,https://cde.neoauto.pe/autos_usados/360x240/488271/488271_8552804.webp,4x2,2017.0
 1.0,MAZDA,4.0,rojo,USD,1500.0,gasolina,16000.0,Lima,2,15700.0,mecanica,tela,https://cde.neoauto.pe/autos_usados/360x240/742279/742279_8959246.webp,4x2,2023.0
 2.0,CHANGAN,4.0,otros,USD,1900.0,diesel,37000.0,Lima,PICK UP,16500.0,mecanica,cuero,https://cde.neoauto.pe/autos_usados/360x240/742691/742691_7079359.webp,4x2,2022.0
@@ -4415,7 +4415,7 @@ Age,Brands,Cilinder,Color,Currency,Engine,Fuel_type,KM,Location,Models,Price,Tra
 8.0,SUZUKI,,gris,USD,1500.0,gasolina,65000.0,Lima,CIAZ,8500.0,automatica,tela,https://cde.neoauto.pe/autos_usados/360x240/742164/742164_2089764.webp,otros,2016.0
 6.0,VOLKSWAGEN,,gris,USD,2000.0,gasolina,75000.0,Lima,JETTA,12000.0,mecanica,tela,https://cde.neoauto.pe/autos_usados/360x240/742169/742169_8760720.webp,otros,2018.0
 3.0,VOLKSWAGEN,,otros,USD,1600.0,gasolina,22000.0,Lima,GOL,14000.0,automatica_secuencial,tela,https://cde.neoauto.pe/autos_usados/360x240/724791/724791_5119994.webp,otros,2021.0
--1.0,TOYOTA,8.0,gris,USD,2800.0,diesel,75.0,Provincias,HILUX,41000.0,mecanica,tela,https://cde.neoauto.pe/autos_usados/360x240/739171/739171_6423880.webp,4x4,2025.0
+0.0,TOYOTA,8.0,gris,USD,2800.0,diesel,75.0,Provincias,HILUX,41000.0,mecanica,tela,https://cde.neoauto.pe/autos_usados/360x240/739171/739171_6423880.webp,4x4,2024.0
 12.0,CHEVROLET,4.0,gris,USD,1800.0,gas_gnv,103000.0,Lima,CRUZE,7200.0,automatica,tela,https://cde.neoauto.pe/autos_usados/360x240/734559/734559_3605227.webp,otros,2012.0
 8.0,NISSAN,4.0,azul,USD,2500.0,dual,87000.0,Lima,X-TRAIL,14900.0,automatica,tela,https://cde.neoauto.pe/autos_usados/360x240/742186/742186_7439676.webp,4x2,2016.0
 13.0,TOYOTA,4.0,negro,USD,2700.0,dual,172000.0,Provincias,LAND CRUISER PRADO,19800.0,mecanica,cuero,https://cde.neoauto.pe/autos_usados/360x240/742156/742156_1179574.webp,premium,2011.0
@@ -5182,7 +5182,7 @@ Age,Brands,Cilinder,Color,Currency,Engine,Fuel_type,KM,Location,Models,Price,Tra
 25.0,BMW,6.0,negro,USD,2800.0,gasolina,179000.0,Lima,328i,6200.0,automatica_secuencial,tela,https://cde.neoauto.pe/autos_usados/360x240/92245/92245_4901819.webp,4x2,1999.0
 13.0,CHEVROLET,,gris,USD,1400.0,dual,100000.0,Lima,AVEO HB,6200.0,automatica,tela,https://cde.neoauto.pe/autos_usados/360x240/741531/741531_4474903.webp,delantera,2011.0
 3.0,TOYOTA,,rojo,USD,,gasolina,30000.0,Lima,RAV4,24000.0,automatica_secuencial,tela,https://cde.neoauto.pe/autos_usados/360x240/192358/192358_4224261.webp,4x2,2021.0
--1.0,ACURA,,otros,USD,,diesel,,Lima,INTEGRA,50000.0,automatica,tela,https://cde.neoauto.pe/autos_usados/360x240/543828/543828_5962483.webp,otros,2025.0
+0.0,ACURA,,otros,USD,,diesel,,Lima,INTEGRA,50000.0,automatica,tela,https://cde.neoauto.pe/autos_usados/360x240/543828/543828_5962483.webp,otros,2024.0
 16.0,AUDI,6.0,plata,USD,3200.0,gasolina,170000.0,Lima,A6,6950.0,automatica,tela,https://cde.neoauto.pe/autos_usados/360x240/675035/675035_8095485.webp,otros,2008.0
 16.0,SEAT,4.0,gris,USD,1598.0,gasolina,128000.0,Lima,IBIZA,8000.0,mecanica,tela,,otros,2008.0
 13.0,CHEVROLET,,azul,USD,1200.0,gasolina,90.0,Lima,SPARK,6500.0,mecanica,cuero,,otros,2011.0

@@ -18,11 +18,9 @@ class Command(BaseCommand):
                 reader = csv.DictReader(csvfile)
                 
                 for row in reader:
-                    km_value = int(row['KM'].replace(',', ''))
-                    price_value = float(row['Price'])
+                    price_value = float(row['Price']) if row['Price'] else None
                     cilinder_value = float(row['Cilinder']) if row['Cilinder'] else None
                     engine_value = float(row['Engine']) if row['Engine'] else None
-                    age_value = int(row['Age'])
                     
                     car = Car(
                         brand=row['Brands'],
@@ -31,8 +29,8 @@ class Command(BaseCommand):
                         currency=row['Currency'],
                         price=price_value,
                         urlpic=row['Urlpic'],
-                        year=int(row['Year']),
-                        km=km_value,
+                        year=int(float(row['Year'])) if row['Year'] else None,
+                        km=int(float(row['KM'])) if row['KM'] else None,
                         fuel_type=row['Fuel_type'],
                         transmission=row['Transmission'],
                         location=row['Location'],
@@ -40,7 +38,7 @@ class Command(BaseCommand):
                         cilinder=cilinder_value,
                         upholstery=row['Upholstery'],
                         engine=engine_value,
-                        age=age_value,
+                        age=int(float(row['Age'])) if row['Age'] else None,
                         is_active=True
                     )
                     car.save()

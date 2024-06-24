@@ -25,4 +25,5 @@ docker-compose -f local.yml run --rm django python manage.py makemigrations
 
 ```bash
 docker-compose -f local.yml run --rm django python manage.py load_cars_from_csv app_django/media/neoauto_clean.csv
+docker-compose -f local.yml run --rm django python manage.py load_cars_from_csv app_model/datasets/clean/data.csv
 ```

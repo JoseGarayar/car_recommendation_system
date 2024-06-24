@@ -56,17 +56,29 @@ class CarDetailView(DetailView):
         cars_df = pd.DataFrame(cars_list)
         numeric_columns = ['price', 'year', 'km', 'cilinder', 'engine', 'age']
         cars_df[numeric_columns] = cars_df[numeric_columns].astype(float)
-        cars_df.drop(columns=['created','modified','is_active', 'urlpic'], inplace=True)
-        cars_encoded = pd.get_dummies(cars_df.set_index('id'))
-        
+        cars_df.drop(columns=['created','modified','is_active', 'urlpic', 'currency'], inplace=True)
+        cars_df.set_index('id', inplace=True)
+
+        # cars_encoded = pd.get_dummies(cars_df.set_index('id'))
+        categorical_columns = ['brand', 'model', 'version', 'fuel_type', 'transmission', 'location', 'color', 'upholstery']
+        # Perform target encoding
+        for col in categorical_columns:
+            # Calculate the mean of the target variable for each category
+            mean_target = cars_df.groupby(col)['price'].mean()
+            # Replace each category with its corresponding mean value
+            cars_df[col] = cars_df[col].map(mean_target)
         # Normalizar los precios para que las magnitudes no dominen la similitud
         if 'price' in cars_df.columns:
             cars_df['price'] = (cars_df['price'] - cars_df['price'].min()) / (cars_df['price'].max() - cars_df['price'].min())
         
+        print(cars_df.columns.to_list())
+        cars_df = cars_df.fillna(0)
         similarities = cosine_similarity(cars_df)
         car_id = context['car'].id
         recommendations = recommend_cars(car_id, cars_df, similarities)
+        print(recommendations)
         car_recommendations = Car.objects.filter(pk__in=recommendations)
+        print(car_recommendations)
         context['car_recommendations'] = car_recommendations
 
         return context

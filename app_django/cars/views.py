@@ -2,7 +2,6 @@
 
 # Django
 from django.views.generic import ListView, TemplateView, DetailView
-from django.db.models import Q
 
 # Models
 from app_django.cars.models import Car
@@ -10,10 +9,13 @@ from app_django.cars.models import Car
 # Helper functions
 from app_django.cars.functions import recommend_cars
 
+# Forms
+from app_django.cars.forms import CarPriceForm
+
 # Recommendation system
-import numpy as np
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
+import pickle
 
 
 class HomeView(ListView):
@@ -82,3 +84,50 @@ class CarDetailView(DetailView):
         context['car_recommendations'] = car_recommendations
 
         return context
+    
+
+class CarPriceEstimatorView(TemplateView):
+    """Return car price estimate."""
+
+    template_name = 'cars/car_price_estimator.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        form = CarPriceForm(self.request.GET or None)
+        context['form'] = form
+
+        if form.is_valid():
+            data = form.cleaned_data
+
+            # Import model
+            with open(f'app_model/objects/encoder.pkl', 'rb') as file:
+                encoder = pickle.load(file)
+
+            with open(f'app_model/objects/transformer.pkl', 'rb') as file:
+                transformer = pickle.load(file)
+
+            with open(f'app_model/objects/estimator.pkl', 'rb') as file:
+                estimator = pickle.load(file)
+            
+            features = [
+                2024 - data['year'], data['brand'], float(data['cilinder']), data['color'],
+                float(data['engine']), data['fuel_type'], data['km'], data['location'],
+                data['model'], data['transmission'], data['upholstery'], data['version']
+            ]
+            print(features)
+            print('encoder', encoder)
+            print('transformer', transformer)
+            print('estimator', estimator)
+            
+            keys = estimator.get_booster().feature_names
+            sample = pd.DataFrame(dict(zip(keys, [[v] for v in features])))
+            sample = encoder.transform(sample)
+            sample = transformer.transform(sample)
+            price = estimator.predict(sample)[0]
+
+            context['result'] = price
+        else:
+            context['result'] = None
+
+        return context
+        

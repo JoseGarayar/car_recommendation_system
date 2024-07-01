@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% load currency_filters %}
+
+{% block head_content %}
+    <title>Old used cars | Price estimator</title>
+{% endblock%}
+
+{% block container %}
+
+<section class="pt-3 pb-3">
+    <div class="container mt-5">
+        <h1 class="text-center">Car Price Estimator</h1>
+        <form method="get" class="mt-4">
+            <div class="form-row">
+                {% for field in form %}
+                    <div class="form-group col-md-6">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="alert alert-danger">
+                                {{ field.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-primary">Estimate Price</button>
+        </form>
+
+        {% if result is not None %}
+            <div class="alert alert-success mt-4">
+                <h2>Estimated Price: {{ result|format_currency:'US$' }}</h2>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}

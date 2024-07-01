@@ -24,5 +24,11 @@ urlpatterns = [
         route='car/<int:pk>',
         view=views.CarDetailView.as_view(),
         name='detail'
+    ),
+
+    path(
+        route='price_estimator/',
+        view=views.CarPriceEstimatorView.as_view(),
+        name='price_estimator'
     )
 ]

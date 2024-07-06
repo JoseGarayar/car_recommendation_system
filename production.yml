@@ -1,21 +1,20 @@
 volumes:
-  production_car_recommendation_postgres_data: {}
-  production_car_recommendation_postgres_data_backups: {}
+  production_car_recommendation_postgres_django_data: {}
+  production_car_recommendation_postgres_django_data_backups: {}
 
 services:
   flask:
     build:
       context: .
-      dockerfile: ./compose/production/flask/Dockerfile
+      dockerfile: ./compose/production/django/Dockerfile
     image: car_recommendation_production
     container_name: car_recommendation_production
     depends_on:
       - postgres
     env_file:
-      - ./.envs/.production/.flask.env
       - ./.envs/.production/.postgres.env
     ports:
-      - "80:5000"
+      - "80:8000"
     command: /start
 
   postgres:
@@ -24,7 +23,7 @@ services:
       dockerfile: ./compose/production/postgres/Dockerfile
     image: car_recommendation_production_postgres
     volumes:
-      - production_car_recommendation_postgres_data:/var/lib/postgresql/data
-      - production_car_recommendation_postgres_data_backups:/backups
+      - production_car_recommendation_postgres_django_data:/var/lib/postgresql/data
+      - production_car_recommendation_postgres_django_data_backups:/backups
     env_file:
       - ./.envs/.production/.postgres

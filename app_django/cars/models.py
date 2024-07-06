@@ -24,7 +24,6 @@ class Car(BaseAppModel):
     cilinder = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     upholstery = models.CharField(max_length=50, null=True, blank=True)
     engine = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
-    age = models.PositiveIntegerField(null=True, blank=True)
 
     is_active = models.BooleanField(default=True)
 

@@ -38,7 +38,6 @@ class Command(BaseCommand):
                         cilinder=cilinder_value,
                         upholstery=row['Upholstery'],
                         engine=engine_value,
-                        age=int(float(row['Age'])) if row['Age'] else None,
                         is_active=True
                     )
                     car.save()

@@ -17,6 +17,27 @@
             </div>
         </div>
         <div class="row mb-4 mt-3">
+            <div class="col-lg-12 mb-3">
+                <div class="card card-body">
+                    <form method="GET" id="frmStore">
+                        <div class="row">
+                            <div class="form-group col-lg-6">
+                                <label>Brand</label>
+                                <select name="brand" class="form-select" required="" maxlength="100" id="id_brand">
+                                </select>
+                            </div>
+                            <div class="form-group col-lg-6">
+                                <label>Model</label>
+                                <select name="model" class="form-select" required="" maxlength="100" id="id_model">
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary my-3">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-4 mt-3">
             <div class="row">
                 {% if cars %}
                     {% include "pagination.html" %}
@@ -45,3 +66,74 @@
 </section>
 
 {% endblock %}
+
+{% block javascript %}
+<script>
+    const brandModelData = {{ brand_model_data|safe }};
+    const brandSelect = document.getElementById('id_brand');
+    const modelSelect = document.getElementById('id_model');
+
+    // Add an empty option to the brand select
+    const emptyOption = document.createElement('option');
+    emptyOption.value = '';
+    emptyOption.text = 'All brands';
+    brandSelect.appendChild(emptyOption);
+
+    // Populate brand options
+    for (const brand in brandModelData) {
+        const option = document.createElement('option');
+        option.value = brand;
+        option.text = brand;
+        brandSelect.appendChild(option);
+    }
+
+    // Add an empty option to the model select
+    const emptyModelOption = document.createElement('option');
+    emptyModelOption.value = '';
+    emptyModelOption.text = 'All models';
+    modelSelect.appendChild(emptyModelOption);
+
+    // Update model options based on selected brand
+    brandSelect.addEventListener('change', function() {
+        const selectedBrand = this.value;
+        const models = brandModelData[selectedBrand] || [];
+        modelSelect.innerHTML = ''; // Clear existing options
+
+        // Add an empty option to the model select
+        const emptyModelOption = document.createElement('option');
+        emptyModelOption.value = '';
+        emptyModelOption.text = 'All models';
+        modelSelect.appendChild(emptyModelOption);
+
+        models.forEach(function(model) {
+            const option = document.createElement('option');
+            option.value = model;
+            option.text = model;
+            modelSelect.appendChild(option);
+        });
+    });
+
+    function getUrlParams() {
+        const params = {};
+        window.location.search.substring(1).split('&').forEach(function(param) {
+            const [key, value] = param.split('=');
+            params[decodeURIComponent(key).replace(/\+/g, ' ')] = decodeURIComponent(value).replace(/\+/g, ' ');
+        });
+        return params;
+    }
+    function setFormFieldsFromUrlParams() {
+        const params = getUrlParams();
+        console.log(params);
+        if (params.brand) {
+            brandSelect.value = params.brand;
+            brandSelect.dispatchEvent(new Event('change')); // Trigger change event to populate models
+
+            if (params.model) {
+                modelSelect.value = params.model;
+            }
+        }
+    }
+    setFormFieldsFromUrlParams();
+    
+</script>
+{% endblock javascript %}

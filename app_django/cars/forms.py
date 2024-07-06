@@ -1,5 +1,6 @@
 from django import forms
 from app_django.cars.models import Car
+import json
 
 class CarPriceForm(forms.ModelForm):
     class Meta:
@@ -20,18 +21,18 @@ class CarPriceForm(forms.ModelForm):
             'version': 'Version',
         }
         widgets = {
-            'year': forms.NumberInput(attrs={'class': 'form-control'}),
-            'brand': forms.TextInput(attrs={'class': 'form-control'}),
-            'cilinder': forms.NumberInput(attrs={'class': 'form-control'}),
-            'color': forms.TextInput(attrs={'class': 'form-control'}),
-            'engine': forms.NumberInput(attrs={'class': 'form-control'}),
-            'fuel_type': forms.TextInput(attrs={'class': 'form-control'}),
-            'km': forms.NumberInput(attrs={'class': 'form-control'}),
-            'location': forms.TextInput(attrs={'class': 'form-control'}),
-            'model': forms.TextInput(attrs={'class': 'form-control'}),
-            'transmission': forms.TextInput(attrs={'class': 'form-control'}),
-            'upholstery': forms.TextInput(attrs={'class': 'form-control'}),
-            'version': forms.TextInput(attrs={'class': 'form-control'}),
+            'year': forms.NumberInput(attrs={'class': 'form-control', 'min':100, "required": True}),
+            'brand': forms.Select(attrs={'class': 'form-select', "required": True}),
+            'cilinder': forms.NumberInput(attrs={'class': 'form-control', "required": True}),
+            'color': forms.Select(attrs={'class': 'form-select', "required": True}),
+            'engine': forms.NumberInput(attrs={'class': 'form-control', "required": True}),
+            'fuel_type': forms.Select(attrs={'class': 'form-select', "required": True}),
+            'km': forms.NumberInput(attrs={'class': 'form-control', "required": True}),
+            'location': forms.Select(attrs={'class': 'form-select', "required": True}),
+            'model': forms.Select(attrs={'class': 'form-select', "required": True}),
+            'transmission': forms.Select(attrs={'class': 'form-select', "required": True}),
+            'upholstery': forms.Select(attrs={'class': 'form-select', "required": True}),
+            'version': forms.Select(attrs={'class': 'form-select', "required": True}),
         }
         
         def clean_year(self):
@@ -51,3 +52,8 @@ class CarPriceForm(forms.ModelForm):
             if engine is not None and engine < 0:
                 raise forms.ValidationError("Engine size cannot be negative.")
             return engine
+        
+        def clean_brand(self):
+            brand = self.cleaned_data.get('brand')
+            if not brand:
+                self.add_error('brand', 'Please select a brand.')

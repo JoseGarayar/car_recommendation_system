@@ -91,6 +91,8 @@ sudo apt install -y chromium-browser
 
 ### 01_app_preprocessing.ipynb
 
+It is used to clear the variables in terms of structure, change data type and generate extra variables. It is mentioned that it is not preprocessing or modeling feature engineering.
+
 This notebook focuses on data preprocessing steps for two datasets: Neoauto and Autocosmos.
 
 Neoauto:
@@ -106,7 +108,11 @@ Autocosmos:
 - Cleans and validates numerical and categorical features similar to Neoauto.
 - Performs feature engineering and saves the cleaned data to a CSV file.
 
-### 02_app_modeling_01.ipynb
+### 02_app_modeling_01.ipynb - 02_app_modeling_02.ipynb
+
+Process of searching for the best hyperparameters for the model. A base XGBoost Regressor is used.
+
+The tuning process involves randomly generating a set of hyperparameters, tuning the seed to achieve the best partitioning into subsets, and finally fitting the model. These results are partially saved in a CSV file that is used to retrain the model and select, based on expert criteria, the set of parameters that maximizes the R², which is the target metric.
 
 This notebook handles the initial modeling phase:
 
@@ -116,6 +122,8 @@ This notebook handles the initial modeling phase:
 - Declares input for multisession to handle multiple modeling tasks concurrently.
 
 ### 03_app_tuned_model.ipynb
+
+The best set of hyperparameters is chosen based on expert judgment. The estimator is then retrained based on the record that meets the boundary conditions.
 
 This notebook focuses on tuning the model:
 
@@ -129,6 +137,10 @@ This notebook focuses on tuning the model:
 
 ### 04_app_calibration_process.ipynb
 
+The base predictions of the estimator are both underestimating and overestimating the target. Therefore, it is necessary to move all of them to the calibration line.
+
+This is done through another model known as a calibrator. It takes the predictions of the regressor with a driver, which is the vehicle's year. With this, the best hyperparameters are sought again using the same criteria as in the previous step.
+
 This notebook covers the calibration process:
 
 - Imports necessary libraries.
@@ -139,6 +151,8 @@ This notebook covers the calibration process:
 - Creates a multisession manager and declares input for multisession.
 
 ### 05_app_tuned_calibrator.ipynb
+
+In the same way as step 03, the parameters that maximize the R² of the calibrator are selected. This model receives two variables as input, and with this, the final predictions are obtained.
 
 This notebook focuses on tuning the calibrator:
 

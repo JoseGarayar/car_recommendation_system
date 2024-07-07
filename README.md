@@ -87,6 +87,33 @@ sudo apt update
 sudo apt install -y chromium-browser
 ```
 
+#### Modelamiento
+
+Notebook 01: 01_app_preprocessing.ipynb
+
+Se usa para limpiar las variables en terminos de estructura, cambiar tipo de datos y generar varibles extra.
+Se menciona que no es el preprocessing ni el feature engineering de modelamiento
+
+Notebook 02: 01_app_modeling_01.ipynb - 01_app_modeling_02.ipynb
+Proceso de búsqueda de mejores hiperparámetros para el modelo. Se usa uno base de XGboost Regressor.
+
+El tuning consiste es generar aleatoriamente un set de hiperparametros, tunear la semillar para realizar la mejor partición en subsets
+y finalmente fitear el modelo. Estos resultados se guardan parcialemente en un csv que sirve para reentrenar el modelo y seleccionar
+por criterio experto que set de parámetros maximiza el R2, el cual es lá metrica objetivo.
+
+Notebook 03: 03_app_tuned_model.ipynb
+Se escoge el mejor set de hiperparámetros en base a criterio experto. Luego se reentrena el estimador en base al registro que cumpla
+las condiciones de borde
+
+Notebook 04: 04_app_calibration_process.ipynb
+Las predicciones base del estimador esta subestimando como sobrestimando el target, por tal motivo, se necesita mover todas ellas
+a la línea de calibración. Esto se realiza a través de otro modelo conocido como calibrador, a el ingresa las predicciones del
+regresor con un driver, el cual es el año del vehiculo, con esto se vuelve a buscar los mejores hiperparametros con el mismo
+cruiterio del paso previo.
+
+Notebook 05: 05_app_tuned_calibrator.ipynb
+De la misma forma que el paso 03, se selecciona los parámetros que maximan el r2 del calibrador. Este recibe dos variables como
+input y con esto se obtienen las predicciones finales.
 
 
 

@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% load currency_filters %}
+
+{% block head_content %}
+    <title>Old used cars | Price estimator</title>
+{% endblock%}
+
+{% block container %}
+
+<section class="pt-3 pb-3">
+    <div class="container mt-5">
+        <h1 class="text-center">Car Price Estimator</h1>
+        <form method="get" class="mt-4">
+            <div class="form-row">
+                {% for field in form %}
+                    <div class="form-group col-md-6">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="alert alert-danger">
+                                {{ field.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Estimate Price</button>
+        </form>
+
+        {% if result is not None %}
+            <div class="alert alert-success mt-4">
+                <h2>Estimated Price: {{ result|format_currency:'US$' }}</h2>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+    const brandModelData = {{ brand_model_data|safe }};
+    const colorsData = {{ colors|safe }};
+    const transmissionData = {{ transmissions|safe }};
+    const versionData = {{ versions|safe }};
+    const fuelTypesData = {{ fuel_types|safe }};
+    const locationsData = {{ locations|safe }};
+    const upholsteryData = {{ upholstery|safe }};
+
+    const brandSelect = document.getElementById('{{ form.brand.id_for_label }}');
+    const modelSelect = document.getElementById('{{ form.model.id_for_label }}');
+    const colorSelect = document.getElementById('{{ form.color.id_for_label }}');
+    const transmissionSelect = document.getElementById('{{ form.transmission.id_for_label }}');
+    const versionSelect = document.getElementById('{{ form.version.id_for_label }}');
+    const fuelTypeSelect = document.getElementById('{{ form.fuel_type.id_for_label }}');
+    const locationSelect = document.getElementById('{{ form.location.id_for_label }}');
+    const upholsterySelect = document.getElementById('{{ form.upholstery.id_for_label }}');
+
+    const emptyUpholsteryOption = document.createElement('option');
+    emptyUpholsteryOption.value = '';
+    emptyUpholsteryOption.text = 'Select a location';
+    upholsterySelect.appendChild(emptyUpholsteryOption);
+
+    upholsteryData.forEach(color => {
+        const option = document.createElement('option');
+        option.value = color;
+        option.text = color;
+        upholsterySelect.appendChild(option);
+    });
+
+    const emptyLocationOption = document.createElement('option');
+    emptyLocationOption.value = '';
+    emptyLocationOption.text = 'Select a location';
+    locationSelect.appendChild(emptyLocationOption);
+
+    locationsData.forEach(color => {
+        const option = document.createElement('option');
+        option.value = color;
+        option.text = color;
+        locationSelect.appendChild(option);
+    });
+    
+    const emptyFuelTypeOption = document.createElement('option');
+    emptyFuelTypeOption.value = '';
+    emptyFuelTypeOption.text = 'Select a version';
+    fuelTypeSelect.appendChild(emptyFuelTypeOption);
+
+    fuelTypesData.forEach(color => {
+        const option = document.createElement('option');
+        option.value = color;
+        option.text = color;
+        fuelTypeSelect.appendChild(option);
+    });
+    
+    const emptyVersionOption = document.createElement('option');
+    emptyVersionOption.value = '';
+    emptyVersionOption.text = 'Select a version';
+    versionSelect.appendChild(emptyVersionOption);
+
+    versionData.forEach(color => {
+        const option = document.createElement('option');
+        option.value = color;
+        option.text = color;
+        versionSelect.appendChild(option);
+    });
+    
+    const emptyTransmissionOption = document.createElement('option');
+    emptyTransmissionOption.value = '';
+    emptyTransmissionOption.text = 'Select a transmission';
+    transmissionSelect.appendChild(emptyTransmissionOption);
+
+    transmissionData.forEach(color => {
+        const option = document.createElement('option');
+        option.value = color;
+        option.text = color;
+        transmissionSelect.appendChild(option);
+    });
+
+    const emptyColorOption = document.createElement('option');
+    emptyColorOption.value = '';
+    emptyColorOption.text = 'Select a color';
+    colorSelect.appendChild(emptyColorOption);
+
+    colorsData.forEach(color => {
+        const option = document.createElement('option');
+        option.value = color;
+        option.text = color;
+        colorSelect.appendChild(option);
+    });
+
+    const emptyOption = document.createElement('option');
+    emptyOption.value = '';
+    emptyOption.text = 'Select a brand';
+    brandSelect.appendChild(emptyOption);
+
+    for (const brand in brandModelData) {
+        const option = document.createElement('option');
+        option.value = brand;
+        option.text = brand;
+        brandSelect.appendChild(option);
+    }
+
+    const emptyModelOption = document.createElement('option');
+    emptyModelOption.value = '';
+    emptyModelOption.text = 'Select a model';
+    modelSelect.appendChild(emptyModelOption);
+
+    brandSelect.addEventListener('change', function() {
+        const selectedBrand = this.value;
+        const models = brandModelData[selectedBrand] || [];
+        modelSelect.innerHTML = '';
+
+        const emptyModelOption = document.createElement('option');
+        emptyModelOption.value = '';
+        emptyModelOption.text = 'Select a model';
+        modelSelect.appendChild(emptyModelOption);
+
+        models.forEach(function(model) {
+            const option = document.createElement('option');
+            option.value = model;
+            option.text = model;
+            modelSelect.appendChild(option);
+        });
+    });
+
+    // Trigger change event to populate model field if brand is already selected
+    // brandSelect.dispatchEvent(new Event('change'));
+
+    function getUrlParams() {
+        const params = {};
+        window.location.search.substring(1).split('&').forEach(function(param) {
+            const [key, value] = param.split('=');
+            params[decodeURIComponent(key).replace(/\+/g, ' ')] = decodeURIComponent(value).replace(/\+/g, ' ');
+        });
+        return params;
+    }
+    function setFormFieldsFromUrlParams() {
+        const params = getUrlParams();
+        console.log(params);
+        if (params.brand) {
+            brandSelect.value = params.brand;
+            brandSelect.dispatchEvent(new Event('change')); // Trigger change event to populate models
+
+            if (params.model) {
+                modelSelect.value = params.model;
+            }
+        }
+        if (params.color) {
+            colorSelect.value = params.color;
+        }
+        if (params.fuel_type) {
+            fuelTypeSelect.value = params.fuel_type;
+        }
+        if (params.location) {
+            locationSelect.value = params.location;
+        }
+        if (params.transmission) {
+            transmissionSelect.value = params.transmission;
+        }
+        if (params.upholstery) {
+            upholsterySelect.value = params.upholstery;
+        }
+        if (params.version) {
+            versionSelect.value = params.version;
+        }
+    }
+    setFormFieldsFromUrlParams();
+
+
+</script>
+{% endblock javascript %}

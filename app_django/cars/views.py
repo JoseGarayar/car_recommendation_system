@@ -138,9 +138,14 @@ class CarPriceEstimatorView(TemplateView):
                 transformer = pickle.load(file)
             with open(f'app_model/objects/estimator.pkl', 'rb') as file:
                 estimator = pickle.load(file)
+            with open(f'app_model/objects/calibrator.pkl', 'rb') as file:
+                calibrator = pickle.load(file)
             
+            current_year = 2024
+            car_age = data['year']
+            age = current_year - car_age
             features = [
-                2024 - data['year'], data['brand'], float(data['cilinder']), data['color'],
+                age, data['brand'], float(data['cilinder']), data['color'],
                 float(data['engine']), data['fuel_type'], data['km'], data['location'],
                 data['model'], data['transmission'], data['upholstery'], data['version']
             ]
@@ -150,8 +155,12 @@ class CarPriceEstimatorView(TemplateView):
             sample = encoder.transform(sample)
             sample = transformer.transform(sample)
             price = estimator.predict(sample)[0]
+            vector_cal = [price, car_age]
+            keys = calibrator.get_booster().feature_names
+            sample = pd.DataFrame(dict(zip(keys, [[v] for v in vector_cal])))
+            price_cal = calibrator.predict(sample)[0]
 
-            context['result'] = price
+            context['result'] = price_cal
         else:
             context['result'] = None
 

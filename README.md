@@ -1,4 +1,4 @@
-# Proyecto Django - Used Cars Website
+# Django project - Used Cars Website
 
 ## Project Description
 
@@ -55,38 +55,97 @@ docker-compose -f local.yml run --rm django python manage.py createsuperuser
 ```
 
 
-## Proyecto de Web Scraping con Selenium y BeautifulSoup
+## Web Scraping Project using Selenium and BeautifulSoup
 
-Este proyecto utiliza `Selenium` y `BeautifulSoup` para realizar web scraping y análisis de datos con `pandas`. A continuación, se presentan las instrucciones para instalar los requisitos necesarios y ejecutar el proyecto.
+This project uses `Selenium` and `BeautifulSoup` to perform web scraping and data analysis with `pandas`. Below are instructions to install the necessary requirements and run the project.
 
-### Requisitos
+### Requirements
 
-Para ejecutar este proyecto, necesitarás tener instaladas las siguientes bibliotecas de Python:
+To run this project, you will need to have the following Python libraries installed:
 
 - `selenium`
 - `beautifulsoup4`
 - `pandas`
 - `chromium-browser`
 
-### Instalación
+### Installation
 
-#### Instalar las dependencias
-Instala las dependencias usando pip:
+#### Install dependencies
+Install the dependencies using pip:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-#### Instalar Chromium
-Instala chromium-browser en tu sistema. Aquí se muestra cómo hacerlo en varias plataformas
+#### Install Chromium
+Install chromium-browser on your system. Here's how to do it on various platforms
 
-En Ubuntu/Debian
+Ubuntu/Debian
 
 ```bash
 sudo apt update
 sudo apt install -y chromium-browser
 ```
 
+## Estimator model project
 
+### 01_app_preprocessing.ipynb
 
+This notebook focuses on data preprocessing steps for two datasets: Neoauto and Autocosmos.
 
+Neoauto:
+
+- Declares paths and constants.
+- Cleans and validates numerical features.
+- Cleans and validates categorical features (Brands, Models, Transmission, Version, Upholstery, Color, Location, Fuel_type).
+- Performs feature engineering and saves the cleaned data to a CSV file.
+
+Autocosmos:
+
+- Reads data.
+- Cleans and validates numerical and categorical features similar to Neoauto.
+- Performs feature engineering and saves the cleaned data to a CSV file.
+
+### 02_app_modeling_01.ipynb
+
+This notebook handles the initial modeling phase:
+
+- Imports necessary libraries.
+- Declares hyperparameters for model training.
+- Creates a multisession manager.
+- Declares input for multisession to handle multiple modeling tasks concurrently.
+
+### 03_app_tuned_model.ipynb
+
+This notebook focuses on tuning the model:
+
+- Imports necessary libraries and cleans the data.
+- Finds the best model by tuning hyperparameters.
+- Refits the model with the found hyperparameters.
+- Reevaluates the model and displays the results.
+- Identifies important features.
+- Saves the categories and unique models per brand.
+- Includes a test case.
+
+### 04_app_calibration_process.ipynb
+
+This notebook covers the calibration process:
+
+- Imports necessary libraries.
+- Loads and cleans the dataframe.
+- Reads the model and gets predictions.
+- Plots a calibration curve.
+- Starts the calibration by declaring hyperparameters.
+- Creates a multisession manager and declares input for multisession.
+
+### 05_app_tuned_calibrator.ipynb
+
+This notebook focuses on tuning the calibrator:
+
+- Imports necessary libraries.
+- Finds the best model for calibration.
+- Refits the model with the found hyperparameters.
+- Reevaluates the model and displays the results.
+- Identifies important features.
+- Saves the categories and unique models per brand.
+- Includes a test case and plots a calibration curve.

@@ -1,0 +1,18 @@
+{
+    "iter": 87,
+    "seed": 98,
+    "cv_fold": 1,
+    "params": "{'alpha': 1, 'gamma': 0.1, 'learning_rate': 0.1, 'max_depth': 5, 'min_child_weight': 1, 'reg_lambda': 0.1, 'subsample': 0.5}",
+    "n_trees": 16,
+    "opt_n_trees": 15,
+    "opt_train": 0.696845,
+    "opt_val": 0.776726,
+    "opt_test": 0.780235,
+    "opt_overfitting": -0.0798809999999999,
+    "best_n_trees": 15,
+    "best_train": 0.696845,
+    "best_val": 0.776726,
+    "best_test": 0.780235,
+    "best_overfitting": -0.0798809999999999,
+    "valid_overfitting": 1
+}

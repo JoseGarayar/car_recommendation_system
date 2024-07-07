@@ -11,10 +11,15 @@
 <section class="pt-3 pb-3">
     <div class="container mt-5">
         <h1 class="text-center">Car Price Estimator</h1>
-        <form method="get" class="mt-4">
-            <div class="form-row">
+        {% if result is not None %}
+            <div class="alert alert-success mt-4">
+                <h2>Estimated Price: {{ result|format_currency:'US$' }}</h2>
+            </div>
+        {% endif %}
+        <form method="get" class="mt-3">
+            <div class="row">
                 {% for field in form %}
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-6 col-sm-12">
                         <label for="{{ field.id_for_label }}">{{ field.label }}</label>
                         {{ field }}
                         {% if field.errors %}
@@ -23,16 +28,13 @@
                             </div>
                         {% endif %}
                     </div>
+                    {% if forloop.counter|divisibleby:2 and not forloop.last %}
+                        </div><div class="row">
+                    {% endif %}
                 {% endfor %}
             </div>
             <button type="submit" class="btn btn-primary mt-3">Estimate Price</button>
         </form>
-
-        {% if result is not None %}
-            <div class="alert alert-success mt-4">
-                <h2>Estimated Price: {{ result|format_currency:'US$' }}</h2>
-            </div>
-        {% endif %}
     </div>
 </section>
 
@@ -177,7 +179,6 @@
     }
     function setFormFieldsFromUrlParams() {
         const params = getUrlParams();
-        console.log(params);
         if (params.brand) {
             brandSelect.value = params.brand;
             brandSelect.dispatchEvent(new Event('change')); // Trigger change event to populate models

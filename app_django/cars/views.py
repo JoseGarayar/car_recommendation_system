@@ -83,6 +83,7 @@ class CarDetailView(DetailView):
         cars_df.drop(columns=['created','modified','is_active', 'urlpic', 'currency'], inplace=True)
         cars_df.set_index('id', inplace=True)
 
+        ######################### NEEDS REFACTOR
         # cars_encoded = pd.get_dummies(cars_df.set_index('id'))
         categorical_columns = ['brand', 'model', 'version', 'fuel_type', 'transmission', 'location', 'color', 'upholstery']
         # Perform target encoding
@@ -91,9 +92,11 @@ class CarDetailView(DetailView):
             mean_target = cars_df.groupby(col)['price'].mean()
             # Replace each category with its corresponding mean value
             cars_df[col] = cars_df[col].map(mean_target)
+            # Normalizar
+            # cars_df[col] = (cars_df[col] - cars_df[col].min()) / (cars_df[col].max() - cars_df[col].min())
         # Normalizar los precios para que las magnitudes no dominen la similitud
-        if 'price' in cars_df.columns:
-            cars_df['price'] = (cars_df['price'] - cars_df['price'].min()) / (cars_df['price'].max() - cars_df['price'].min())
+        # if 'price' in cars_df.columns:
+            # cars_df['price'] = (cars_df['price'] - cars_df['price'].min()) / (cars_df['price'].max() - cars_df['price'].min())
         
         cars_df = cars_df.fillna(0)
         similarities = cosine_similarity(cars_df)

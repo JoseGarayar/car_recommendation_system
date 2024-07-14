@@ -5,20 +5,27 @@ import json
 class CarPriceForm(forms.ModelForm):
     class Meta:
         model = Car
-        fields = ['year', 'brand', 'cilinder', 'color', 'engine', 'fuel_type', 'km', 'location', 'model', 'transmission', 'upholstery', 'version']
+        fields = [
+            'brand', 'model', 
+            'version', 'year', 
+            'km', 'engine', 
+            'cilinder', 'color',  
+            'fuel_type', 'transmission', 
+            'upholstery', 'location'
+        ]
         labels = {
-            'year': 'Year',
-            'brand': 'Brand',
-            'cilinder': 'Cilinder',
+            'year': 'Año',
+            'brand': 'Marca',
+            'cilinder': 'Cilindros (3-8)',
             'color': 'Color',
-            'engine': 'Engine',
-            'fuel_type': 'Fuel Type',
+            'engine': 'Motor (cc)',
+            'fuel_type': 'Tipo de combustible',
             'km': 'KM',
-            'location': 'Location',
-            'model': 'Model',
-            'transmission': 'Transmission',
-            'upholstery': 'Upholstery',
-            'version': 'Version',
+            'location': 'Ubicación',
+            'model': 'Modelo',
+            'transmission': 'Transmisión',
+            'upholstery': 'Tapicería',
+            'version': 'Versión',
         }
         widgets = {
             'year': forms.NumberInput(attrs={'class': 'form-control', 'min':100, "required": True}),

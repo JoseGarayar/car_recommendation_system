@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block head_content %}
-    <title>Old used cars | Store</title>
+    <title>AutoMatch Peru | Store</title>
 {% endblock%}
 
 {% block container %}
@@ -10,10 +10,10 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-uppercase text-center">
-                <h1>Store</h1>
+                <h1>Tienda</h1>
             </div>
             <div class="col-12 text-left pt-3">
-                <h5>Welcome to out store!!</h5>
+                <h5>Bienvenidos a nuestra tienda!!</h5>
             </div>
         </div>
         <div class="row mb-4 mt-3">
@@ -22,17 +22,17 @@
                     <form method="GET" id="frmStore">
                         <div class="row">
                             <div class="form-group col-lg-6">
-                                <label>Brand</label>
+                                <label>Marca</label>
                                 <select name="brand" class="form-select" maxlength="100" id="id_brand">
                                 </select>
                             </div>
                             <div class="form-group col-lg-6">
-                                <label>Model</label>
+                                <label>Modelo</label>
                                 <select name="model" class="form-select" maxlength="100" id="id_model">
                                 </select>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary my-3">Search</button>
+                        <button type="submit" class="btn btn-primary my-3">Buscar</button>
                     </form>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                     {% endfor %}
                 {% else %}
                     <div class="col-12 pt-3 pb-3" style="min-height: 50vh;">
-                        <h5>* No available cars</h5>
+                        <h5>* No hay autos disponibles</h5>
                     </div>
                 {% endif %}
             </div>
@@ -76,7 +76,7 @@
     // Add an empty option to the brand select
     const emptyOption = document.createElement('option');
     emptyOption.value = '';
-    emptyOption.text = 'All brands';
+    emptyOption.text = 'Todas las marcas';
     brandSelect.appendChild(emptyOption);
 
     // Populate brand options
@@ -90,7 +90,7 @@
     // Add an empty option to the model select
     const emptyModelOption = document.createElement('option');
     emptyModelOption.value = '';
-    emptyModelOption.text = 'All models';
+    emptyModelOption.text = 'Todos los modelos';
     modelSelect.appendChild(emptyModelOption);
 
     // Update model options based on selected brand
@@ -102,7 +102,7 @@
         // Add an empty option to the model select
         const emptyModelOption = document.createElement('option');
         emptyModelOption.value = '';
-        emptyModelOption.text = 'All models';
+        emptyModelOption.text = 'Todos los modelos';
         modelSelect.appendChild(emptyModelOption);
 
         models.forEach(function(model) {

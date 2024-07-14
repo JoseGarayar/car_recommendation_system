@@ -16,12 +16,12 @@
         <div class="card-footer">
             {% if car.price %}
                 <div class="d-flex align-items-center">
-                    <span class="badge bg-danger me-2">PRICE <br> OFFER</span></h1>
+                    <span class="badge bg-danger me-2">PRECIO <br> OFERTA</span></h1>
                     <span class="card-subtitle text-danger font-weight-bold">{{ car.price|format_currency:car.currency }}</span>
                 </div>
-                <small class="text-muted">
+                <!-- <small class="text-muted">
                     Normal: {{ car.price|format_currency:car.currency }}
-                </small>
+                </small> -->
             {% endif %}
         </div>
     </div>

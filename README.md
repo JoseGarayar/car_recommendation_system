@@ -2,7 +2,9 @@
 
 ## Project Description
 
-This project is a Django application designed to manage a used cars sales website. Below are the main features and components developed:
+This project is a Django application designed to manage a used cars website. A video explaining the functionalities of the webpage can be found here:  [**Youtube video**](https://youtu.be/_pJhJk7SA8Y) 
+
+Below are the main features and components developed:
 
 ### Features
 

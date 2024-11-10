@@ -1,8 +1,8 @@
 """Cars views."""
 
 # Django
-from django.views.generic import ListView, TemplateView, DetailView
 from django.db.models import Q
+from django.views.generic import ListView, TemplateView, DetailView
 
 # Models
 from app_django.cars.models import Car
@@ -18,6 +18,9 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 import pickle
 import json
+
+# Utils
+from app_django.utils.mixins import CustomLoginRequiredMixin
 
 
 class HomeView(ListView):
@@ -35,7 +38,7 @@ class HomeView(ListView):
         return queryset
 
 
-class StoreView(ListView):
+class StoreView(CustomLoginRequiredMixin, ListView):
     """Return all cars."""
 
     template_name = 'cars/store.html'
@@ -65,7 +68,7 @@ class StoreView(ListView):
         return context
 
 
-class CarDetailView(DetailView):
+class CarDetailView(CustomLoginRequiredMixin, DetailView):
     """Return detail for a single car."""
 
     template_name = 'cars/detail_car.html'
@@ -108,7 +111,7 @@ class CarDetailView(DetailView):
         return context
     
 
-class CarPriceEstimatorView(TemplateView):
+class CarPriceEstimatorView(CustomLoginRequiredMixin, TemplateView):
     """Return car price estimate."""
 
     template_name = 'cars/car_price_estimator.html'

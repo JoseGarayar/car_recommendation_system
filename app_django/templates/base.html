@@ -26,14 +26,29 @@
 
 </head>
 <body>
-    {% include "nav.html" %}
 
     <div class="main">
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'error' %}
+                <div class="alert alert-danger d-flex align-items-center my-0" role="alert">
+                    <div class="container">
+                        {{ message }}
+                    </div>
+                </div>
+                {% elif message.tags == 'success' %}
+                <div class="alert alert-success d-flex align-items-center my-0" role="alert">
+                    <div class="container">
+                        {{ message }}
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
         {% block container %}
         {% endblock %}
     </div>
-
-    {% include "footer.html" %}
 
     <script 
         src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" 

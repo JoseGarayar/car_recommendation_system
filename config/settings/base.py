@@ -4,6 +4,9 @@ Django base settings for project to build other settings files upon.
 
 import environ
 
+# Django
+from django.urls import reverse_lazy
+
 ROOT_DIR = environ.Path(__file__) - 3
 APPS_DIR = ROOT_DIR.path('app_django')
 
@@ -149,9 +152,9 @@ MEDIA_ROOT = str(APPS_DIR('media'))
 MEDIA_URL = '/media/'
 
 # Login
-# LOGIN_URL = '/login/'
-# LOGIN_REDIRECT_URL = '/'
-# LOGOUT_REDIRECT_URL = LOGIN_URL
+LOGIN_URL = reverse_lazy('users:login')
+LOGIN_REDIRECT_URL = reverse_lazy('cars:home')
+LOGOUT_REDIRECT_URL = LOGIN_URL
 
 # Default primary key field type
 

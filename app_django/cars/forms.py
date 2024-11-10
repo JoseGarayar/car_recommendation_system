@@ -1,6 +1,5 @@
 from django import forms
 from app_django.cars.models import Car
-import json
 
 class CarPriceForm(forms.ModelForm):
     class Meta:

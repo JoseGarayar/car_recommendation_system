@@ -8,6 +8,8 @@
 
 {% block container %}
 
+{% include "nav.html" %}
+
     <main id="main">
         <div id="carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-indicators" style="z-index: 3;">
@@ -78,5 +80,7 @@
             </div>
         </div>
     </section>
+
+{% include "footer.html" %}
 
 {% endblock %}

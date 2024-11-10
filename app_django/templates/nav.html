@@ -16,6 +16,7 @@
                         Home
                     </a>
                 </li>
+                {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url "cars:store" %}">
                         Tienda
@@ -26,6 +27,23 @@
                         Calculadora
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "users:logout" %}">
+                        Cerrar sesión
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "users:login" %}">
+                        Inicia sesión
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url "users:signup" %}">
+                        Regístrate
+                    </a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </div>

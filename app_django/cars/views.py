@@ -11,14 +11,13 @@ from django.views.generic import ListView, TemplateView, DetailView
 from app_django.cars.models import Car, Rating
 
 # Helper functions
-from app_django.cars.functions import recommend_cars
+from app_django.cars.functions import get_recommended_car_ids, get_predictions_surprise
 
 # Forms
 from app_django.cars.forms import CarPriceForm
 
 # Recommendation system
 import pandas as pd
-from sklearn.metrics.pairwise import cosine_similarity
 import pickle
 import json
 
@@ -81,37 +80,21 @@ class CarDetailView(CustomLoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         
+        # Recommender system
         cars = self.get_queryset()
         cars_list = list(cars.values())
-        cars_df = pd.DataFrame(cars_list)
-        numeric_columns = ['price', 'year', 'km', 'cilinder', 'engine']
-        cars_df[numeric_columns] = cars_df[numeric_columns].astype(float)
-        cars_df.drop(columns=['created','modified','is_active', 'urlpic', 'currency'], inplace=True)
-        cars_df.set_index('id', inplace=True)
-
-        ######################### NEEDS REFACTOR
-        # cars_encoded = pd.get_dummies(cars_df.set_index('id'))
-        categorical_columns = ['brand', 'model', 'version', 'fuel_type', 'transmission', 'location', 'color', 'upholstery']
-        # Perform target encoding
-        for col in categorical_columns:
-            # Calculate the mean of the target variable for each category
-            mean_target = cars_df.groupby(col)['price'].mean()
-            # Replace each category with its corresponding mean value
-            cars_df[col] = cars_df[col].map(mean_target)
-            # Normalizar
-            # cars_df[col] = (cars_df[col] - cars_df[col].min()) / (cars_df[col].max() - cars_df[col].min())
-        # Normalizar los precios para que las magnitudes no dominen la similitud
-        # if 'price' in cars_df.columns:
-            # cars_df['price'] = (cars_df['price'] - cars_df['price'].min()) / (cars_df['price'].max() - cars_df['price'].min())
-        
-        cars_df = cars_df.fillna(0)
-        similarities = cosine_similarity(cars_df)
-        car_id = context['car'].id
-        recommendations = recommend_cars(car_id, cars_df, similarities)
-        car_recommendations = Car.objects.filter(pk__in=recommendations)
+        recommended_car_ids = get_recommended_car_ids(cars_list, context['car'].id)
+        car_recommendations = Car.objects.filter(pk__in=recommended_car_ids)
         context['car_recommendations'] = car_recommendations
 
-        # Agregar ratings
+        # Recommender system using surprise
+        ratings = [(rating.user.id, rating.car.id, rating.rating) for rating in Rating.objects.all()]
+        df_ratings = pd.DataFrame(ratings, columns=['user_id', 'car_id', 'rating'])
+        top_cars_ids = get_predictions_surprise(df_ratings, self.request.user.id)
+        top_cars = Car.objects.filter(pk__in=top_cars_ids)
+        context['top_cars_svd'] = top_cars
+
+        # Add ratings
         user_rating = Rating.objects.filter(user=self.request.user, car=self.object).first()
         context['user_rating'] = user_rating.rating if user_rating else None
 

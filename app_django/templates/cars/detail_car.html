@@ -138,6 +138,37 @@
         </div>
     </section>
 
+    <section class="pt-3 pb-3">
+        <div class="container">
+            <div class="row mb-3">
+                <div class="col text-uppercase text-center">
+                    <h2 class="text-color-neutral">Autos recomendados SVD</h2>
+                </div>
+            </div>
+            <div class="row">
+                {% if top_cars_svd %}
+                    {% for car in top_cars_svd %}
+                        <div class="col-6 col-sm-6 col-lg-3 mb-4">
+                            {% include "cars/car_card.html" %}
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="col-12 pt-3 pb-3">
+                        <h5 class="text-color-neutral">* No hay autos disponibles</h5>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="row my-3">
+                <div class="col text-uppercase text-center">
+                    <big class="text-bold text-color-neutral">Revisa todos nuestros autos disponibles</big>
+                    <h2>
+                        <a href="{% url "cars:store" %}" class="btn btn-primary">Ir a la tienda</a>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </section>
+
 {% include "footer.html" %}
 
 {% endblock %}

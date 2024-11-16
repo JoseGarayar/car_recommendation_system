@@ -3,6 +3,9 @@
 # Django
 from django.db import models
 
+# Models
+from app_django.users.models import User
+
 # Utilities
 from app_django.utils.models import BaseAppModel
 
@@ -28,4 +31,13 @@ class Car(BaseAppModel):
     is_active = models.BooleanField(default=True)
 
 
+class Rating(BaseAppModel):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="ratings")
+    car = models.ForeignKey(Car, on_delete=models.CASCADE, related_name="ratings")
+    rating = models.PositiveSmallIntegerField()
 
+    class Meta:
+        unique_together = ('user', 'car')
+
+    def __str__(self):
+        return f"Usuario: {self.user.username} - Auto ID: {self.car.id}: {self.rating}"

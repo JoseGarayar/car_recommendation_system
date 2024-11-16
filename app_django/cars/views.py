@@ -1,11 +1,14 @@
 """Cars views."""
 
 # Django
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import ListView, TemplateView, DetailView
 
 # Models
-from app_django.cars.models import Car
+from app_django.cars.models import Car, Rating
 
 # Helper functions
 from app_django.cars.functions import recommend_cars
@@ -108,6 +111,10 @@ class CarDetailView(CustomLoginRequiredMixin, DetailView):
         car_recommendations = Car.objects.filter(pk__in=recommendations)
         context['car_recommendations'] = car_recommendations
 
+        # Agregar ratings
+        user_rating = Rating.objects.filter(user=self.request.user, car=self.object).first()
+        context['user_rating'] = user_rating.rating if user_rating else None
+
         return context
     
 
@@ -172,3 +179,22 @@ class CarPriceEstimatorView(CustomLoginRequiredMixin, TemplateView):
 
         return context
         
+
+@login_required
+def rate_car(request, car_id):
+    if request.method == 'POST':
+        car = get_object_or_404(Car, id=car_id)
+        rating_value = int(request.POST.get('rating', 0))
+
+        if 0 < rating_value <= 5:
+            Rating.objects.update_or_create(
+                user=request.user,
+                car=car,
+                defaults={'rating': rating_value},
+            )
+            messages.success(request, "Tu calificación ha sido enviada correctamente!")
+            return redirect(request.META.get('HTTP_REFERER', '/'))
+        messages.error(request, "Error en calificación enviada!")
+        return redirect(request.META.get('HTTP_REFERER', '/'))
+    messages.error(request, "El método de solicitud no es válido!")
+    return redirect(request.META.get('HTTP_REFERER', '/'))

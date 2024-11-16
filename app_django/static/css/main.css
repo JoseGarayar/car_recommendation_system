@@ -113,3 +113,15 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
 }
+
+/* Stars */
+
+.star {
+    cursor: pointer;
+    color: #ccc;
+    font-size: 2rem;
+}
+
+.star.highlighted i {
+    color: gold;
+}

@@ -14,7 +14,7 @@ class Command(BaseCommand):
             users = User.objects.all().values()
             cars = list(Car.objects.all().values())
             ratings_list = (1,2,3,4,5)
-            num_ratings_per_user = 30
+            num_ratings_per_user = 15
             for user in users:
                 random_car_id = random.choice(cars)['id']
                 for _ in range(num_ratings_per_user):

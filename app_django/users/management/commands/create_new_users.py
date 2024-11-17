@@ -16,17 +16,22 @@ class Command(BaseCommand):
         try:
             with open(csv_file, newline='', encoding='utf-8') as csvfile:
                 reader = csv.DictReader(csvfile, delimiter=';')
+                users_to_create = []
                 
                 for row in reader:
                     username = row['Username']
                     email = row['Email']
                     password = row['Password']
-                    
-                    User.objects.create_user(
-                        username=username,
-                        email=email, 
-                        password=password
+
+                    users_to_create.append(
+                        User(
+                            username=username,
+                            email=email, 
+                            password=password
+                        )
                     )
+                
+                User.objects.bulk_create(users_to_create)
 
             self.stdout.write(self.style.SUCCESS(f'Successfully loaded data from {csv_file}, total users: {User.objects.all().count()}'))
         except Exception as e:

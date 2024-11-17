@@ -62,7 +62,7 @@ docker-compose -f local.yml run --rm django python manage.py createsuperuser
 docker-compose -f local.yml run --rm django python manage.py create_new_users app_django/users/media/usuarios.csv
 ```
 
-5. Optional: Add random ratings per user
+6. Optional: Add random ratings per user
 
 ```bash
 docker-compose -f local.yml run --rm django python manage.py add_random_ratings

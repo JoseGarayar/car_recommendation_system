@@ -56,6 +56,11 @@ docker-compose -f local.yml run --rm django python manage.py makemigrations
 docker-compose -f local.yml run --rm django python manage.py createsuperuser
 ```
 
+5. Optional: Create new users
+
+```bash
+docker-compose -f local.yml run --rm django python manage.py create_new_users app_django/users/media/usuarios.csv
+```
 
 ## Web Scraping Project using Selenium and BeautifulSoup
 

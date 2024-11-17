@@ -1,0 +1,34 @@
+volumes:
+  local_car_recommendation_postgres_django_data: {}
+  local_car_recommendation_postgres_django_data_backups: {}
+
+services:
+  estimator:
+    build:
+      context: .
+      dockerfile: ./compose/local/recsys/Dockerfile
+    image: car_recommendation_recsys
+    container_name: car_recommendation_recsys
+    depends_on:
+      - postgres
+    volumes:
+      - ./app_recsys:/app
+    env_file:
+      - ./.envs/.local/.recsys.env
+    ports:
+      - "8888:8888"
+    command: ["/start"]
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./compose/production/postgres/Dockerfile
+    image: car_recommendation_postgres_local
+    container_name: car_recommendation_postgres_local
+    volumes:
+      - local_car_recommendation_postgres_django_data:/var/lib/postgresql/data
+      - local_car_recommendation_postgres_django_data_backups:/backups
+    env_file:
+      - ./.envs/.local/.postgres.env
+    ports:
+      - "5432:5432"

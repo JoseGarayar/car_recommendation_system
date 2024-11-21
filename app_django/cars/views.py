@@ -89,8 +89,7 @@ class CarDetailView(CustomLoginRequiredMixin, DetailView):
 
         # Recommender system using surprise
         ratings = [(rating.user.id, rating.car.id, rating.rating) for rating in Rating.objects.all()]
-        df_ratings = pd.DataFrame(ratings, columns=['user_id', 'car_id', 'rating'])
-        top_cars_ids = get_predictions_surprise(df_ratings, self.request.user.id)
+        top_cars_ids = get_predictions_surprise(ratings, self.request.user.id)
         top_cars = Car.objects.filter(pk__in=top_cars_ids)
         context['top_cars_svd'] = top_cars
 

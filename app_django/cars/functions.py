@@ -3,9 +3,9 @@ from typing import Any
 
 # Recommender system libraries
 from sklearn.metrics.pairwise import cosine_similarity
+import pickle
 import numpy as np
 import pandas as pd
-from surprise import Dataset, Reader, SVD
 
 
 def recommend_cars(auto_id: int, autos_encoded: pd.DataFrame, similaridades, top_n=4):
@@ -70,13 +70,14 @@ def get_predictions_surprise(ratings: list[tuple[int,int,int]], user_id: int, to
                    sorted by the predicted rating in descending order.
     """
     df_ratings = pd.DataFrame(ratings, columns=['user_id', 'car_id', 'rating'])
-    reader = Reader(rating_scale=(1, 5))
-    data = Dataset.load_from_df(df_ratings[['user_id', 'car_id', 'rating']], reader)
-    trainset = data.build_full_trainset()
-    model = SVD()
-    model.fit(trainset)
-    unique_items  = df_ratings['car_id'].unique()
-    predictions = [model.predict(user_id, item_id) for item_id in unique_items]
+    with open(f'app_django/cars/pickle_files/modelo_svd.pkl', 'rb') as file:
+        model = pickle.load(file)
+    # unique_items  = df_ratings['car_id'].unique()
+    # predictions = [model.predict(user_id, item_id) for item_id in unique_items]
+    rated_items = df_ratings[df_ratings['user_id'] == user_id]['car_id'].tolist()
+    unique_items = df_ratings['car_id'].unique()
+    items_to_predict = [item for item in unique_items if item not in rated_items]
+    predictions = model.test([(user_id, item, 0) for item in items_to_predict])
     top_predictions = sorted(predictions, key=lambda x: x.est, reverse=True)[:top_n]
     top_item_ids = [prediction.iid for prediction in top_predictions]
     return top_item_ids

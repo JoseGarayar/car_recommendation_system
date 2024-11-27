@@ -1,4 +1,4 @@
-FROM python:3.12.2-alpine3.19
+FROM python:3.11-slim
 
 RUN apk update \
     # psycopg2 dependencies

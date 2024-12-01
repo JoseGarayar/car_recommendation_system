@@ -3,9 +3,9 @@ from typing import Any
 
 # Recommender system libraries
 from sklearn.metrics.pairwise import cosine_similarity
-import pickle
 import numpy as np
 import pandas as pd
+from surprise import Dataset, Reader, SVD
 
 
 def recommend_cars(auto_id: int, autos_encoded: pd.DataFrame, similaridades, top_n=4):
@@ -70,10 +70,15 @@ def get_predictions_surprise(ratings: list[tuple[int,int,int]], user_id: int, to
                    sorted by the predicted rating in descending order.
     """
     df_ratings = pd.DataFrame(ratings, columns=['user_id', 'car_id', 'rating'])
-    with open(f'app_django/cars/pickle_files/modelo_svd.pkl', 'rb') as file:
-        model = pickle.load(file)
-    # unique_items  = df_ratings['car_id'].unique()
-    # predictions = [model.predict(user_id, item_id) for item_id in unique_items]
+    
+    # Train SVD model using surprise
+    reader = Reader(rating_scale=(1, 5))
+    data = Dataset.load_from_df(df_ratings[['user_id', 'car_id', 'rating']], reader)
+    trainset = data.build_full_trainset()
+    model = SVD(n_factors=100, n_epochs=20)
+    model.fit(trainset)
+
+    # Get predictions from trained model
     rated_items = df_ratings[df_ratings['user_id'] == user_id]['car_id'].tolist()
     unique_items = df_ratings['car_id'].unique()
     items_to_predict = [item for item in unique_items if item not in rated_items]

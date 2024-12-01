@@ -88,7 +88,7 @@ class CarDetailView(CustomLoginRequiredMixin, DetailView):
         context['car_recommendations'] = car_recommendations
 
         # Recommender system using surprise
-        ratings = [(rating.user.id, rating.car.id, rating.rating) for rating in Rating.objects.all()]
+        ratings = list(Rating.objects.select_related('user', 'car').values_list('user_id', 'car_id', 'rating'))
         top_cars_ids = get_predictions_surprise(ratings, self.request.user.id)
         top_cars = Car.objects.filter(pk__in=top_cars_ids)
         context['top_cars_svd'] = top_cars

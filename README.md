@@ -68,6 +68,12 @@ docker-compose -f local.yml run --rm django python manage.py create_new_users ap
 docker-compose -f local.yml run --rm django python manage.py add_random_ratings
 ```
 
+7. Optional: Train SVD model
+
+```bash
+docker-compose -f local.yml run --rm django python manage.py cross_validate_svd_model
+```
+
 ## Web Scraping Project using Selenium and BeautifulSoup
 
 This project uses `Selenium` and `BeautifulSoup` to perform web scraping and data analysis with `pandas`. Below are instructions to install the necessary requirements and run the project.

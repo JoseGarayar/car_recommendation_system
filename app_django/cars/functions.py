@@ -5,7 +5,7 @@ from typing import Any
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 import pandas as pd
-from surprise import Dataset, Reader, SVD
+import pickle
 
 
 def recommend_cars(auto_id: int, autos_encoded: pd.DataFrame, similaridades, top_n=4):
@@ -71,12 +71,9 @@ def get_predictions_surprise(ratings: list[tuple[int,int,int]], user_id: int, to
     """
     df_ratings = pd.DataFrame(ratings, columns=['user_id', 'car_id', 'rating'])
     
-    # Train SVD model using surprise
-    reader = Reader(rating_scale=(1, 5))
-    data = Dataset.load_from_df(df_ratings[['user_id', 'car_id', 'rating']], reader)
-    trainset = data.build_full_trainset()
-    model = SVD(n_factors=100, n_epochs=20)
-    model.fit(trainset)
+    # Get SVD  trained model
+    with open(f'app_django/cars/surprise_model/svd.pkl', 'rb') as file:
+        model = pickle.load(file)
 
     # Get predictions from trained model
     rated_items = df_ratings[df_ratings['user_id'] == user_id]['car_id'].tolist()

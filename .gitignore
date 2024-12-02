@@ -260,3 +260,10 @@ tags
 .env
 .envs/*
 !.envs/.local/
+
+
+# Surprise model
+app_django/cars/surprise_model/*
+
+# Results CSV
+app_django/cars/media/*

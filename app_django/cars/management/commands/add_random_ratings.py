@@ -17,15 +17,20 @@ class Command(BaseCommand):
             num_ratings_per_user = 15
             for user in users:
                 random_car_id = random.choice(cars)['id']
+                set_car_ids = set()
+                set_car_ids.add(random_car_id)
                 for _ in range(num_ratings_per_user):
                     rating_value = random.choice(ratings_list)
-                    Rating.objects.update_or_create(
-                        user_id=user['id'],
-                        car_id=random_car_id,
-                        defaults={'rating': rating_value}
-                    )
                     recommended_car_ids = get_recommended_car_ids(cars, random_car_id)
                     random_car_id = random.choice(recommended_car_ids)
+                    set_car_ids.add(random_car_id)
+                list_rating_instances = [Rating(
+                                            user_id=user['id'],
+                                            car_id=car_id,
+                                            rating= rating_value
+                                        ) for car_id in set_car_ids]
+                Rating.objects.bulk_create(list_rating_instances)
+                
                 self.stdout.write(self.style.SUCCESS(f'Successfully added rating data for user: {user["id"]}'))
 
             self.stdout.write(self.style.SUCCESS(f'Successfully added rating data'))
